@@ -11,6 +11,9 @@ import Testimonials from "../components/testimonials";
 import Cta from "../components/cta";
 import Faq from "../components/faq";
 import PopupWidget from "../components/popupWidget";
+import React from 'react'
+import Sparkles from 'react-sparkle'
+
 
 const Home = () => {
   return (
@@ -23,31 +26,27 @@ const Home = () => {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
+      <Sparkles flicker={false}
+        count={20}
+        minSize={7}
+        maxSize={12}
+        overflowPx={80}
+        fadeOutSpeed={10}
+      />
       <Navbar />
       <Hero />
-      <SectionTitle
-        title="Welcome">
-        Many learners preparing for certification exams struggle to find personalized, effective study materials
-        that adapt to their unique learning styles and the dynamic nature of exam content. 
-      </SectionTitle>
-      
-      <SectionTitle
-        pretitle="Certibot"
-        title={`" Thou Shall Pass "`}>
-        This leads to inadequate preparation, increased anxiety, and lower success rates in certification exams,
-        which are crucial for professional advancement.
-      </SectionTitle>
 
+
+
+    
       <SectionTitle
-        pretitle=""
-        title="Preparation Selection Page">
-        <div className="flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
+        title="Preparation Selection Page" noparagraph={true}>
+        <div className="mt-6 flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
           <a
             href="https://web3templates.com/templates/nextly-landing-page-template-for-startups"
             target="_blank"
             rel="noopener"
-            className="px-8 py-4 text-lg font-medium text-center text-white bg-indigo-600 rounded-md ">
+            className="px-8 py-4 text-lg font-medium text-center text-white bg-blue-800 rounded-xl ">
             Try it Now
           </a>
         </div>

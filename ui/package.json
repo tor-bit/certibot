@@ -31,7 +31,9 @@
     "next-themes": "^0.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "react-hook-form": "^7.43.9"
+    "react-hook-form": "^7.43.9",
+    "react-sparkle": "^2.0.0",
+    "tsparticles-preset-stars": "^1.16.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
