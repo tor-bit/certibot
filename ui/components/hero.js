@@ -19,7 +19,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2">
-          <div className="">
+          <div className="bot-animate">
             <Image priority
               src={heroImg}
               width="616"
@@ -32,23 +32,23 @@ const Hero = () => {
         </div>
 
 
-          <div className=" flex w-full flex-col mt-4 items-center justify-center text-center">
-        <p className="max-w-4xl mt-3 text-3xl font-bold leading-snug tracking-tight text-blue-200 lg:leading-tight lg:text-4xl dark:text-white">
-        This leads to inadequate preparation, increased anxiety, and lower success rates in certification exams,
-        which are crucial for professional advancement.
-      </p>
+        <div className=" flex w-full flex-col mt-4 items-center justify-center text-center">
+          <p className="max-w-4xl mt-3 text-3xl font-bold leading-snug tracking-tight text-blue-200 lg:leading-tight lg:text-4xl dark:text-white">
+          This leads to inadequate preparation, increased anxiety, and lower success rates in certification exams,
+          which are crucial for professional advancement.
+          </p>
 
-      <div className="mt-8 text-sm font-bold tracking-wider text-blue-500 uppercase">
-        INTRODUCING
-      </div>
+          <div className="mt-8 text-sm font-bold tracking-wider text-blue-500 uppercase">
+            INTRODUCING
+          </div>
 
-      <h1 className="mt-4 font-bold leading-snug tracking-tight text-gray-100 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white" style={{fontSize:'130px'}}>
-        Certibot
-      </h1>
+          <h1 className="mt-4 font-bold leading-snug tracking-tight text-gray-100 lg:text-4xl lg:leading-tight xl:text-6xl xl:leading-tight dark:text-white" style={{fontSize:'130px'}}>
+            Certibot
+          </h1>
 
-      <div className="text-3xl mt-3 font-bold tracking-wider text-blue-500 uppercase">
-         {`"THOU SHALL PASS"`}
-        </div>
+          <div className="text-3xl mt-3 font-bold tracking-wider text-blue-500 uppercase">
+            {`"THOU SHALL PASS"`}
+          </div>
       </div>
 
       </Container>

@@ -2,15 +2,7 @@ import Head from "next/head";
 import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
-
-import { benefitOne, benefitTwo } from "../components/data";
-import Video from "../components/video";
-import Benefits from "../components/benefits";
 import Footer from "../components/footer";
-import Testimonials from "../components/testimonials";
-import Cta from "../components/cta";
-import Faq from "../components/faq";
-import PopupWidget from "../components/popupWidget";
 import React from 'react'
 import Sparkles from 'react-sparkle'
 
@@ -27,7 +19,7 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Sparkles flicker={false}
-        count={20}
+        count={30}
         minSize={7}
         maxSize={12}
         overflowPx={80}
@@ -35,10 +27,6 @@ const Home = () => {
       />
       <Navbar />
       <Hero />
-
-
-
-    
       <SectionTitle
         title="Preparation Selection Page" noparagraph={true}>
         <div className="mt-6 flex flex-col items-start space-y-3 sm:space-x-4 sm:space-y-0 sm:items-center sm:flex-row">
@@ -51,7 +39,6 @@ const Home = () => {
           </a>
         </div>
       </SectionTitle>
-
       <Footer />
     </>
   );
