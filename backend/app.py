@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS 
-from questions_generator import GCPExamQuestionGenerator
+from questions_generator import ExamQuestionGenerator
 
 app = Flask('Certibot')
 CORS(app)
@@ -131,7 +131,7 @@ def exam_outline_sections():
 def generate_questions_for_sections():
     selected_sections = request.get_json()
 
-    question_generator = GCPExamQuestionGenerator(exam_outline=exam_outlines["Professional Data Engineer"])
+    question_generator = ExamQuestionGenerator(exam_outline=exam_outlines["Professional Data Engineer"])
 
     # Structure to hold the questions for each section
     section_questions = {}
