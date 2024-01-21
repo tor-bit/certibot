@@ -89,3 +89,20 @@ Certibot is a Flask application that facilitates the selection and examination o
 4. Submit the chosen exam details to `'/exam_selection'`.
 5. Retrieve the outline of the selected exam from `'/exam_outline_sections'`.
 6. Generate questions for specific sections using `'/generate_questions_for_sections'`.
+
+## Running the Code
+
+### Prerequisites
+- Python 3
+- pip (Python package manager)
+
+### Setup
+
+#### Activate the Virtual Environment
+
+Navigate to the project's root directory and activate the virtual environment:
+
+On Unix or MacOS:
+```bash
+source myenv/bin/activate
+
