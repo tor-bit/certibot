@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS 
-from questions_generator import ExamQuestionGenerator
+from modules.questions_generator import ExamQuestionGenerator
 
 app = Flask('Certibot')
 CORS(app)
@@ -86,6 +86,10 @@ exam_outlines = {
 # Temporary storage for selected exam details
 selected_exam_details = {}
 
+@app.route('/', methods=['GET'])
+def home_screen():
+    return "Welcome to Certibot!"
+
 @app.route('/companies', methods=['GET'])
 def get_companies():
     companies = list(exams_by_company.keys())
@@ -130,8 +134,13 @@ def exam_outline_sections():
 @app.route('/generate_questions_for_sections', methods=['POST'])
 def generate_questions_for_sections():
     selected_sections = request.get_json()
+    exam_name = selected_exam_details.get('exam_name')
 
-    question_generator = ExamQuestionGenerator(exam_outline=exam_outlines["Professional Data Engineer"])
+    # Check if the selected exam is in the outlines
+    if exam_name in exam_outlines:
+        question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[exam_name])
+    else:
+        return jsonify({"error": "Exam outline not found"}), 404
 
     # Structure to hold the questions for each section
     section_questions = {}

@@ -1,6 +1,6 @@
 import openai
 
-class GCPExamQuestionGenerator:
+class ExamQuestionGenerator:
     def __init__(self, model='gpt-4-1106-preview', exam_outline=''):
         self.model = model
         # will have to scrape this
