@@ -157,5 +157,13 @@ def generate_questions_for_sections():
     # Return the structured response as JSON
     return jsonify(section_questions)
 
+@app.route('/exam_outline_key_topics', methods=['GET'])
+def exam_outline_key_topics():
+    return ""
+
+@app.route('/generate_questions_for_topics', methods=['POST'])
+def generate_questions_for_topics():
+    return ""
+
 if __name__ == '__main__':
     app.run(debug=True)
