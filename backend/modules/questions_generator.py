@@ -10,7 +10,7 @@ class ExamQuestionGenerator:
         """
         Generate a list of keywords for the exam.
         """      
-        return self._call_openai_api(f'Return only a list, comma separated, of important keywords from this exam outline {self.exam_outline}')
+        return self._call_openai_api(f'Return only a list of 5, comma separated, of the core technologies based on this exam outline {self.exam_outline}')
 
     def based_on_outline(self, section):
         """
@@ -26,7 +26,7 @@ class ExamQuestionGenerator:
         """
         Generate questions based on keywords for the exam.
         """
-        return self._call_openai_api(f'Generate 5 complex, scenario-based multiple-choice questions based on these {keywords} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "keyword" key for the keyword, "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
+        return self._call_openai_api(f'Generate 1 complex, scenario-based multiple-choice questions based on each of these {keywords} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "keyword" key for the keyword, "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
 
 
     def _call_openai_api(self, content):

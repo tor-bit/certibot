@@ -159,11 +159,58 @@ def generate_questions_for_sections():
 
 @app.route('/exam_outline_key_topics', methods=['GET'])
 def exam_outline_key_topics():
-    return ""
+    global selected_exam_details
+    exam_name = selected_exam_details.get('exam_name')
+
+    # Check if the exam name is set and valid
+    if exam_name in exam_outlines:
+        # Initialize the question generator with the exam outline
+        question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[exam_name])
+
+        # Retrieve key topics
+        key_topics = question_generator.retrieve_keywords()
+
+        # Return the key topics as a JSON response
+        key_topics = key_topics.split(",")
+        return jsonify({"key_topics": key_topics})
+    else:
+        # Return an error if the exam name is not set or invalid
+        return jsonify({"error": "Invalid or unspecified exam name"}), 400
+
 
 @app.route('/generate_questions_for_topics', methods=['POST'])
 def generate_questions_for_topics():
-    return ""
+    data = request.get_json()
+    custom_topics = data.get('custom', [])
+    chosen_topics = data.get('chosen', [])
+    global selected_exam_details
+    exam_name = selected_exam_details.get('exam_name')
+
+    # Initialize your question generator
+    question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[exam_name])
+
+    # Structure to hold the questions for each topic
+    topics_questions = {}
+
+    # Generate questions for custom topics
+    for topic in custom_topics:
+        try:
+            generated_questions = question_generator.based_on_keywords(topic)
+            topics_questions[topic] = generated_questions
+        except ValueError as e:
+            topics_questions[topic] = str(e)
+
+    # Generate questions for chosen topics
+    for topic in chosen_topics:
+        try:
+            generated_questions = question_generator.based_on_keywords(topic)
+            topics_questions[topic] = generated_questions
+        except ValueError as e:
+            topics_questions[topic] = str(e)
+
+    # Return the structured response as JSON
+    return jsonify(topics_questions)
+
 
 if __name__ == '__main__':
     app.run(debug=True)
