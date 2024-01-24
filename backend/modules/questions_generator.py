@@ -16,8 +16,6 @@ class ExamQuestionGenerator:
         """
         Generate questions for a specific section of the exam.
         """
-        # if section not in self.exam_outline:
-        #     raise ValueError(f"Invalid section: {section}")
 
         section = self.exam_outline[section]
         return self._call_openai_api(f'Generate 5 complex, scenario-based multiple-choice questions about {section} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
@@ -26,7 +24,24 @@ class ExamQuestionGenerator:
         """
         Generate questions based on keywords for the exam.
         """
-        return self._call_openai_api(f'Generate 1 complex, scenario-based multiple-choice questions based on each of these {keywords} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "keyword" key for the keyword, "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
+        response_text = self._call_openai_api(f'Generate 1 complex, scenario-based multiple-choice questions based on each of these {keywords} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "keyword" key for the keyword, "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
+
+        # Attempt to parse the response as JSON
+        try:
+            response_data = json.loads(response_text)
+        except Exception as e:
+            # Handle the case where response is not valid JSON
+            print("Received response is not in valid JSON format: {response_text}")
+            return {}
+
+        # Clean up the JSON object (if necessary)
+        cleaned_response = {}
+        for keyword, question_data in response_data.items():
+            cleaned_response[keyword] = {
+                key: value.replace('\n', ' ') for key, value in question_data.items()
+            }
+
+        return cleaned_response
 
 
     def _call_openai_api(self, content):
@@ -44,3 +59,7 @@ class ExamQuestionGenerator:
                 ]
             )
             return response.choices[0].message.content    
+    
+# question_generator = ExamQuestionGenerator(exam_outline="")
+# generated_questions = question_generator.based_on_keywords(["BigQuery"])
+# print(generated_questions)

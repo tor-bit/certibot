@@ -52,36 +52,7 @@ exams_by_company = {
 
 # Mock data for exam outlines
 exam_outlines = {
-    'Professional Data Engineer' : {
-            'Section 1': """Designing Data Processing Systems
-            - Security and Compliance: IAM, Data Security, Privacy, Regional Data Considerations, Compliance
-            - Reliability and Fidelity: Data Cleaning, Monitoring Data Pipelines, Disaster Recovery, ACID Compliance, Data Validation
-            - Flexibility and Portability: Mapping Business Requirements, Data/Application Portability, Data Staging/Cataloging
-            - Data Migrations: Analyzing Stakeholder Needs, Migration Planning, Validation Strategy, Project/Dataset/Table Architecture""",
-
-            'Section 2': """Ingesting and Processing Data
-            - Planning Data Pipelines: Data Sources/Sinks, Transformation Logic, Networking, Encryption
-            - Building Pipelines: Data Cleansing, Service Identification, Transformations (Batch/Streaming), Data Acquisition
-            - Deploying Pipelines: Job Automation, CI/CD""",
-
-            'Section 3': """Storing Data
-            - Selecting Storage Systems: Data Access Patterns, Managed Services, Storage Costs/Performance, Data Lifecycle
-            - Data Warehouse Usage: Data Model Design, Data Normalization, Business Requirements, Architecture for Data Access
-            - Data Lakes: Management, Processing, Monitoring
-            - Data Mesh: Building Data Mesh, Segmenting Data, Federated Governance Model""",
-
-            'Section 4': """Preparing and Using Data for Analysis
-            - Data Preparation for Visualization: Tool Connections, Field Pre-calculation, BigQuery Materialized Views, Granularity of Time Data
-            - Sharing Data: Data Sharing Rules, Publishing Datasets/Reports, Analytics Hub
-            - Data Exploration and Analysis: Data Preparation for Feature Engineering, Data Discovery""",
-
-            'Section 5': """Maintaining and Automating Data Workloads
-            - Optimizing Resources: Minimizing Costs, Resource Availability, Persistent/Job-based Data Clusters
-            - Designing Automation: Creating DAGs, Scheduling Jobs
-            - Organizing Workloads: Pricing Models, Job Types
-            - Monitoring and Troubleshooting: Observability, Usage Monitoring, Troubleshooting, Workload Management
-            - Failure Awareness: Fault Tolerance, Multi-region Job Runs, Data Corruption Handling, Replication/Failover"""
-    }
+    'Professional Data Engineer' : 45
 }
 # Temporary storage for selected exam details
 selected_exam_details = {}
@@ -195,21 +166,12 @@ def generate_questions_for_topics():
     # Generate questions for custom topics
     for topic in custom_topics:
         try:
-            generated_questions = question_generator.based_on_keywords(topic)
-            topics_questions[topic] = generated_questions
+            generated_questions = question_generator.based_on_keywords(chosen_topics)
         except ValueError as e:
-            topics_questions[topic] = str(e)
-
-    # Generate questions for chosen topics
-    for topic in chosen_topics:
-        try:
-            generated_questions = question_generator.based_on_keywords(topic)
-            topics_questions[topic] = generated_questions
-        except ValueError as e:
-            topics_questions[topic] = str(e)
+            print(e)
 
     # Return the structured response as JSON
-    return jsonify(topics_questions)
+    return jsonify(generated_questions)
 
 
 if __name__ == '__main__':
