@@ -31,12 +31,9 @@ Certibot is a Flask-based application designed to assist users in preparing for 
 - **Method:** POST
 - **Description:** Selects an exam for generating questions.
 - **Input:** `{"certifier": "Google", "exam_name": "Professional Data Engineer", "exam_outline": "sections"}`
-- **Example Request:**
-
-curl -X POST http://localhost:5000/exam_selection
+- **Example Request:** `curl -X POST http://localhost:5000/exam_selection
 -H "Content-Type: application/json"
--d '{"certifier": "Google", "exam_name": "Professional Data Engineer", "exam_outline": "sections"}'
-
+-d '{"certifier": "Google", "exam_name": "Professional Data Engineer", "exam_outline": "sections"}'`
 - **Response:** `{"message": "Exam selection received", "data": ...}`
 
 ### Exam Outline Sections
@@ -51,12 +48,9 @@ curl -X POST http://localhost:5000/exam_selection
 - **Method:** POST
 - **Description:** Generates questions for the selected exam sections.
 - **Input:** `{"1": "Section 1", "2": "Section 2"}`
-- **Example Request:**
-
-curl -X POST http://localhost:5000/generate_questions_for_sections
+- **Example Request:** `curl -X POST http://localhost:5000/generate_questions_for_sections
 -H "Content-Type: application/json"
--d '{"1": "Section 1", "2": "Section 2"}'
-
+-d '{"1": "Section 1", "2": "Section 2"}'`
 - **Response:** `{ "Section 1": "...questions...", "Section 2": "...questions..." }`
 
 ### Exam Outline Key Topics
@@ -72,7 +66,21 @@ curl -X POST http://localhost:5000/generate_questions_for_sections
 - **Method:** POST
 - **Description:** Generates questions based on provided topics for the selected exam.
 - **Input:** JSON object with a list of topics under the key `"topics"`.
-- **Example Request:**
+- **Example Request:** `curl -X POST http://localhost:5000/generate_questions_for_topics
+-H "Content-Type: application/json"
+-d '{"topics": ["IAM", "Data Lakes", "BigQuery"]}'`
+- **Response:** JSON object containing generated questions for each topic provided.
+- **Example Response:** `{
+"questions": [
+{
+"topic": "IAM",
+"question": "How does IAM ...",
+"options": ["Option A", "Option B", "Option C", "Option D"],
+"solution": {"answer": "Option A", "explanation": "..."}
+},
+...
+]
+}`
 
 ## Running the Application
 
