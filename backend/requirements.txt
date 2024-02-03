@@ -27,7 +27,7 @@ httpx==0.26.0
 idna==3.4
 jmespath==1.0.1
 numpy==1.25.0
-openai==1.8.0
+openai==0.28.0
 packaging==23.1
 pandas==2.0.2
 Pillow==9.5.0

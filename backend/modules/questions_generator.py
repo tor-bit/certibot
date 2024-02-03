@@ -48,6 +48,3 @@ class ExamQuestionGenerator:
             )
             return response.choices[0].message.content    
     
-# question_generator = ExamQuestionGenerator(exam_outline="")
-# generated_questions = question_generator.based_on_keywords(["BigQuery"])
-# print(generated_questions)
