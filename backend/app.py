@@ -102,7 +102,6 @@ def get_exams_for_company(company):
     else:
         return jsonify({"error": "Company not found"}), 404
 
-
 @app.route('/exam_selection', methods=['POST'])
 def exam_selection():
     global selected_exam_details
@@ -166,7 +165,8 @@ def generate_questions_for_sections():
                 section_questions[section_key] = json.loads(clean_text)
             except ValueError as e:
                 # Handle the error appropriately, maybe log it or return an error message
-                section_questions[section_key] = e #"Error generating questions for this section"
+                return e
+                # section_questions[section_key] = e #"Error generating questions for this section"
         else:
             section_questions[section_key] = "Section not found in the exam outline"
 
@@ -220,8 +220,6 @@ def generate_questions_for_topics():
 
     # Return the cleaned JSON
     return jsonify(generated_questions_json)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
