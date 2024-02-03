@@ -195,4 +195,5 @@ You can then use `curl` or any HTTP client to interact with the API endpoints as
 
 ## Testing Endpoints
 
-Use the `curl` commands provided under each endpoint section to test the functionality of the Certibot application. Replace `localhost:5000` with your server's address if you're hosting the application elsewhere.
+Use the `curl` commands provided under each endpoint section to test the functionality of the Certibot application. Replace `localhost:5000` with the `https://cert-bot-dev.ew.r.appspot.com/` address to access the hosted application. Running the hosted address eliminates the need to run the python script locally. 
+
