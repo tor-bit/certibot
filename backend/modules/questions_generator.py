@@ -6,42 +6,30 @@ class ExamQuestionGenerator:
         # will have to scrape this
         self.exam_outline = exam_outline
 
-    def retrieve_keywords(self):
+    def retrieve_keytopics(self):
         """
         Generate a list of keywords for the exam.
         """      
-        return self._call_openai_api(f'Return only a list of 5, comma separated, of the core technologies based on this exam outline {self.exam_outline}')
+        return self._call_openai_api(f'Return only a list of 5, comma separated, of the top core topics based on this exam outline {self.exam_outline}')
 
-    def based_on_outline(self, section):
+    def based_on_outline(self, section, exam_name):
         """
         Generate questions for a specific section of the exam.
         """
 
         section = self.exam_outline[section]
-        return self._call_openai_api(f'Generate 5 complex, scenario-based multiple-choice questions about {section} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
+        return self._call_openai_api(f'Generate 5 complex, scenario-based multiple-choice questions about {section} for the {exam_name} Exam. Include answers and explanations for each question in JSON format. Return the response as a json object. Structure the JSON object with question, options, and solution keys. Remove any markdown or contextual characters.')
     
-    def based_on_keywords(self, keywords):
+    def based_on_topics(self, keywords, exam_name):
         """
-        Generate questions based on keywords for the exam.
+        Generate questions based on a list of keywords for the exam.
         """
-        response_text = self._call_openai_api(f'Generate 1 complex, scenario-based multiple-choice questions based on each of these {keywords} for the GCP Professional Data Engineer Exam. Include answers and explanations for each question. Return the response as a json object. Structure your JSON object as follows: include a "keyword" key for the keyword, "question" key for the exam question, an "options" key with choices labeled "A" to "D," and a "solution" key containing the "answer" (correct option) and an "explanation" for why it\'s correct.')
-
-        # Attempt to parse the response as JSON
-        try:
-            response_data = json.loads(response_text)
-        except Exception as e:
-            # Handle the case where response is not valid JSON
-            print("Received response is not in valid JSON format: {response_text}")
-            return {}
-
-        # Clean up the JSON object (if necessary)
-        cleaned_response = {}
-        for keyword, question_data in response_data.items():
-            cleaned_response[keyword] = {
-                key: value.replace('\n', ' ') for key, value in question_data.items()
-            }
-
-        return cleaned_response
+        prompt = f'Generate 5 complex, scenario-based multiple-choice questions for each of these topics {keywords} for the {exam_name} Exam. Include answers and explanations for each question in JSON format. Return only a json object as response. Structure the JSON object with topic, question, options, and solution keys. Remove any markdown or contextual characters.'
+        response = self._call_openai_api(prompt)
+        
+        # Assume the response is structured with one block per topic
+        # This parsing will depend on how you format the prompt and the expected response structure
+        return response
 
 
     def _call_openai_api(self, content):
