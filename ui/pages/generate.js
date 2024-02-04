@@ -8,32 +8,61 @@ import Sparkles from 'react-sparkle'
 import Container from "../components/container";
 import { NormalSelect } from "../components/dataEntry";
 import Link from "next/link";
+import { getCompanies, getExamsCompany, getExamSelection } from "./api/api";
 
 const exam_types = [
-  { value: 'google', label: 'Google' },
-  { value: 'aws', label: 'AWS' },
-  { value: 'microsoft', label: 'Microsoft' }
+  { value: 'Google', label: 'Google' },
+  { value: 'AWS', label: 'AWS' },
+  { value: 'Microsoft', label: 'Microsoft' }
 ]
 
 
-const GenerateQuestions = () => {
+const GenerateQuestions = ({companies}) => {
 
 
   
   const [exam_outline, setExamOutline] = useState('topics');
 
+  const [exams, setExams] = useState([{value:'', label:''}]);
 
-  const [exam_type, setExamType] = useState('google');
+  const [exam_type, setExamType] = useState('Google');
 
-  const handleExamTypeChange = () => {
+  const [exam_specific, setExamSpecfic] = useState('');
+
+
+  const handleGetExamsCompany = async (val) => {
+    let res = await getExamsCompany(val);
+    console.log("READ: ", res);
+    let dict = [];
+    for (var x = 0; x < res.length; x++) {
+      let neww = {value:x, label:res[x]};
+      dict.push(neww);
+    }
+    console.log("Dictionary is: ", dict)
+    setExams(dict);
+    return res;
+}
+
+  const handleExamTypeChange = (value) => {
     console.log("Handle Exam Type change")
+    setExamType(value);
+    let neww = handleGetExamsCompany(value);
+    console.log("NNN: ", neww)
   }
 
   const handleExamOutlineChange = (value) => {
     console.log("E: ", value)
     setExamOutline(value)
   }
-  
+
+  const handleExamSpecificChange = (value) => {
+    setExamSpecfic(value);
+  }
+
+  const handleExamSelection = async () => {
+    let neww = getExamSelection(exam_type, exam_specific, exam_outline);
+    console.log("NWWW: ", neww)
+  }
   
 
   return (
@@ -66,7 +95,7 @@ const GenerateQuestions = () => {
         <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
           Exam Specification
         </div>
-        <NormalSelect value={exam_type} defaultValue={exam_type} handleChange={handleExamTypeChange} options={exam_types}/>
+        <NormalSelect value={exam_specific} defaultValue={exam_specific} handleChange={handleExamSpecificChange} options={exams}/>
 
         <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
           Exam Outline
@@ -77,9 +106,11 @@ const GenerateQuestions = () => {
           { value: 'sections', label: 'Sections' },
         ]}/>
 
-        <Link href={exam_outline === 'topics' ? "/topics_outline":"/sections_outline"} className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+        <button href={exam_outline === 'topics' ? "/topics_outline":"/sections_outline"} 
+        onClick={handleExamSelection}
+        className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
           Let's do it!
-        </Link>
+        </button>
       </Container>
       <Footer />
     </>
@@ -87,3 +118,14 @@ const GenerateQuestions = () => {
 }
 
 export default GenerateQuestions;
+
+
+export async function getServerSideProps() {
+  const companies = await getCompanies();
+  
+  return {
+    props: {
+      companies
+    },
+  };
+}
