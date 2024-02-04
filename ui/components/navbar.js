@@ -62,7 +62,7 @@ const Navbar = () => {
                           {item}
                       </Link>
                     ))}
-                    <Link href="/" className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+                    <Link href="/generate" className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
                         Try it now
                     </Link>
                   </>
@@ -86,7 +86,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/" className="px-6 py-2 text-white bg-blue-800 rounded-xl md:ml-5">
+          <Link href="/generate" className="px-6 py-2 text-white bg-blue-800 rounded-xl md:ml-5">
               Try it now
           </Link>
         </div>
