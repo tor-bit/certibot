@@ -11,8 +11,8 @@ import Link from "next/link";
 import { getCompanies, getExamsCompany, getExamSelection } from "./api/api";
 
 const exam_types = [
-  { value: 'Google', label: 'Google' },
-  { value: 'AWS', label: 'AWS' },
+  { value: 'GCP', label: 'Google Cloud Platform' },
+  { value: 'AWS', label: 'Amazon Web Services' },
   { value: 'Microsoft', label: 'Microsoft' }
 ]
 
@@ -25,7 +25,7 @@ const GenerateQuestions = ({companies}) => {
 
   const [exams, setExams] = useState([{value:'', label:''}]);
 
-  const [exam_type, setExamType] = useState('Google');
+  const [exam_type, setExamType] = useState('GCP');
 
   const [exam_specific, setExamSpecfic] = useState('');
 

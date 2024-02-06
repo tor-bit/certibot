@@ -1,14 +1,4 @@
 
-export const getHomeScreen = async () => {
-  const res = await fetch(
-    `https://cert-bot-dev.ew.r.appspot.com/`
-  );
-  const responseJson = await res.json();
-  console.log("REs ", responseJson)
-  return responseJson;
-}
-
-
 export const getCompanies = async () => {
   const res = await fetch(
     `https://cert-bot-dev.ew.r.appspot.com/companies`

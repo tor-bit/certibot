@@ -4,9 +4,7 @@ import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
 import Footer from "../components/footer";
 import React from 'react'
-import Sparkles from 'react-sparkle'
-import { getHomeScreen } from "./api/api";
-
+import Sparkles from 'react-sparkle';
 
 // home page
 export default function Home () {
@@ -49,12 +47,3 @@ export default function Home () {
 }
 
 
-export async function getServerSideProps() {
-  const photos = await getHomeScreen();
-  console.log("PPP", photos)
-  return {
-    props: {
-      photos
-    },
-  };
-}
