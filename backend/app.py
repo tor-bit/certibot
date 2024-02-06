@@ -54,30 +54,11 @@ exams_by_company = {
 # Mock data for exam outlines
 exam_outlines = {
     'GCP': {'Professional Data Engineer': {
-        'Section 1': """Designing Data Processing Systems
-- Security and Compliance: IAM, Data Security, Privacy, Regional Data Considerations, Compliance
-- Reliability and Fidelity: Data Cleaning, Monitoring Data Pipelines, Disaster Recovery, ACID Compliance, Data Validation
-- Flexibility and Portability: Mapping Business Requirements, Data/Application Portability, Data Staging/Cataloging
-- Data Migrations: Analyzing Stakeholder Needs, Migration Planning, Validation Strategy, Project/Dataset/Table Architecture""",
-        'Section 2': """Ingesting and Processing Data
-- Planning Data Pipelines: Data Sources/Sinks, Transformation Logic, Networking, Encryption
-- Building Pipelines: Data Cleansing, Service Identification, Transformations (Batch/Streaming), Data Acquisition
-- Deploying Pipelines: Job Automation, CI/CD""",
-        'Section 3': """Storing Data
-- Selecting Storage Systems: Data Access Patterns, Managed Services, Storage Costs/Performance, Data Lifecycle
-- Data Warehouse Usage: Data Model Design, Data Normalization, Business Requirements, Architecture for Data Access
-- Data Lakes: Management, Processing, Monitoring
-- Data Mesh: Building Data Mesh, Segmenting Data, Federated Governance Model""",
-        'Section 4': """Preparing and Using Data for Analysis
-- Data Preparation for Visualization: Tool Connections, Field Pre-calculation, BigQuery Materialized Views, Granularity of Time Data
-- Sharing Data: Data Sharing Rules, Publishing Datasets/Reports, Analytics Hub
-- Data Exploration and Analysis: Data Preparation for Feature Engineering, Data Discovery""",
-        'Section 5': """Maintaining and Automating Data Workloads
-- Optimizing Resources: Minimizing Costs, Resource Availability, Persistent/Job-based Data Clusters
-- Designing Automation: Creating DAGs, Scheduling Jobs
-- Organizing Workloads: Pricing Models, Job Types
-- Monitoring and Troubleshooting: Observability, Usage Monitoring, Troubleshooting, Workload Management
-- Failure Awareness: Fault Tolerance, Multi-region Job Runs, Data Corruption Handling, Replication/Failover"""
+        'Section 1': "Designing Data Processing Systems:- Security and Compliance: IAM, Data Security, Privacy, Regional Data Considerations, Compliance. Reliability and Fidelity: Data Cleaning, Monitoring Data Pipelines, Disaster Recovery, ACID Compliance, Data Validation. Flexibility and Portability: Mapping Business Requirements, Data/Application Portability, Data Staging/Cataloging. Data Migrations: Analyzing Stakeholder Needs, Migration Planning, Validation Strategy, Project/Dataset/Table Architecture.",
+        'Section 2': "Ingesting and Processing Data:- Planning Data Pipelines: Data Sources/Sinks, Transformation Logic, Networking, Encryption. Building Pipelines: Data Cleansing, Service Identification, Transformations (Batch/Streaming), Data Acquisition. Deploying Pipelines: Job Automation, CI/CD.",
+        'Section 3': "Storing Data:- Selecting Storage Systems: Data Access Patterns, Managed Services, Storage Costs/Performance, Data Lifecycle. Data Warehouse Usage: Data Model Design, Data Normalization, Business Requirements, Architecture for Data Access. Data Lakes: Management, Processing, Monitoring. Data Mesh: Building Data Mesh, Segmenting Data, Federated Governance Model.",
+        'Section 4': "Preparing and Using Data for Analysis:- Data Preparation for Visualization: Tool Connections, Field Pre-calculation, BigQuery Materialized Views, Granularity of Time Data. Sharing Data: Data Sharing Rules, Publishing Datasets/Reports, Analytics Hub. Data Exploration and Analysis: Data Preparation for Feature Engineering, Data Discovery.",
+        'Section 5': "Maintaining and Automating Data Workloads:- Optimizing Resources: Minimizing Costs, Resource Availability, Persistent/Job-based Data Clusters. Designing Automation: Creating DAGs, Scheduling Jobs. Organizing Workloads: Pricing Models, Job Types. Monitoring and Troubleshooting: Observability, Usage Monitoring, Troubleshooting, Workload Management. Failure Awareness: Fault Tolerance, Multi-region Job Runs, Data Corruption Handling, Replication/Failover."
     }
     }
 }
@@ -121,7 +102,8 @@ def exam_selection():
         exam_scope = exam_outlines[certifier][exam_name]
         # Assuming you want to return the sections and their content
         if exam_outline.lower() == 'sections':
-            return jsonify(exam_scope)
+            exam_scope = json.dumps(exam_scope).replace("/n","")
+            return exam_scope
         elif exam_outline.lower() == 'topics':
             question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[certifier][exam_name])
             # Retrieve key topics
@@ -164,8 +146,7 @@ def generate_questions_for_sections():
                 section_questions[section_key] = json.loads(clean_text)
             except ValueError as e:
                 # Handle the error appropriately, maybe log it or return an error message
-                return e
-                # section_questions[section_key] = e #"Error generating questions for this section"
+                section_questions[section_key] = "Error generating questions for this section"
         else:
             section_questions[section_key] = "Section not found in the exam outline"
 
@@ -188,8 +169,7 @@ def generate_questions_for_topics():
         generated_questions_json = json.loads(generated_questions_str)
     except json.JSONDecodeError as e:
         # If an error occurs, log it or handle it as needed
-        return jsonify({"error": str(e)}), 500
-        #return jsonify({"error": "Failed to decode JSON"}), 500
+        return jsonify({"error": "Failed to decode JSON"}), 500
 
     # Return the cleaned JSON
     return jsonify(generated_questions_json)
