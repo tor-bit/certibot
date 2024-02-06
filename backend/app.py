@@ -117,21 +117,20 @@ def exam_selection():
         "exam_outline": exam_outline
     }
 
-    return jsonify({"message": "Exam selection received", "data": data})
-
-@app.route('/exam_outline_sections', methods=['GET'])
-def exam_outline_sections():
-    global selected_exam_details
-
-    # Extract certifier and exam name from selected_exam_details
-    certifier = selected_exam_details.get('certifier')
-    exam_name = selected_exam_details.get('exam_name')
-
-    # Navigate the nested structure to get the specific exam's outline
     if certifier in exam_outlines and exam_name in exam_outlines[certifier]:
-        exam_outline = exam_outlines[certifier][exam_name]
+        exam_scope = exam_outlines[certifier][exam_name]
         # Assuming you want to return the sections and their content
-        return jsonify(exam_outline)
+        if exam_outline.lower() == 'sections':
+            return jsonify(exam_scope)
+        elif exam_outline.lower() == 'topics':
+            question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[certifier][exam_name])
+            # Retrieve key topics
+            key_topics = question_generator.retrieve_keytopics()
+            # Return the key topics as a JSON response
+            key_topics = key_topics.split(",")
+            return jsonify({"key_topics": key_topics})
+        else:
+            return jsonify({"error": "Selection Unknown"}), 404
     else:
         return jsonify({"error": "Exam outline not found"}), 404
 
@@ -173,28 +172,6 @@ def generate_questions_for_sections():
     # Return the structured response as JSON
     return jsonify(section_questions)
 
-@app.route('/exam_outline_key_topics', methods=['GET'])
-def exam_outline_key_topics():
-    global selected_exam_details
-    exam_name = selected_exam_details.get('exam_name')
-    certifier = selected_exam_details.get('certifier')
-
-    # Check if the exam name is set and valid
-    if certifier in exam_outlines and exam_name in exam_outlines[certifier]:
-        # Initialize the question generator with the exam outline
-        question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[certifier][exam_name])
-
-        # Retrieve key topics
-        key_topics = question_generator.retrieve_keytopics()
-
-        # Return the key topics as a JSON response
-        key_topics = key_topics.split(",")
-        return jsonify({"key_topics": key_topics})
-    else:
-        # Return an error if the exam name is not set or invalid
-        return jsonify({"error": "Invalid or unspecified exam name"}), 400
-
-
 @app.route('/generate_questions_for_topics', methods=['POST'])
 def generate_questions_for_topics():
     data = request.get_json()
@@ -211,12 +188,8 @@ def generate_questions_for_topics():
         generated_questions_json = json.loads(generated_questions_str)
     except json.JSONDecodeError as e:
         # If an error occurs, log it or handle it as needed
-        print(f"Error decoding JSON: {e}")
-        return jsonify({"error": "Failed to decode JSON"}), 500
-
-    # If the JSON is deeply nested or needs further cleaning, do it here
-    # For example, if you need to remove markdown or additional characters,
-    # you might iterate over the items and clean them as needed
+        return jsonify({"error": str(e)}), 500
+        #return jsonify({"error": "Failed to decode JSON"}), 500
 
     # Return the cleaned JSON
     return jsonify(generated_questions_json)
