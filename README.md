@@ -35,7 +35,7 @@ Certibot is a Flask-based application designed to assist users in preparing for 
 - **Method:** POST
 - **Description:** Selects an exam for generating questions.
 - **Input:**
-  `{"certifier": "Google",
+  `{"certifier": "GCP",
   "exam_name": "Professional Data Engineer",
   "exam_outline": "sections"}`
 - **Example Request:**
@@ -43,23 +43,7 @@ Certibot is a Flask-based application designed to assist users in preparing for 
 -H "Content-Type: application/json"
 -d '{"certifier": "Google", "exam_name": "Professional Data Engineer", "exam_outline": "sections"}'`
 - **Response:**
-  `{
-  "data": {
-    "certifier": "GCP",
-    "exam_name": "Professional Data Engineer",
-    "exam_outline": "topics"
-  },
-  "message": "Exam selection received"
-}`
-
-### Exam Outline Sections
-- **Endpoint:** `/exam_outline_sections`
-- **Method:** GET
-- **Description:** Retrieves the outline of the selected exam.
-- **Example Request:**
-  `curl http://localhost:5000/exam_outline_sections`
-- **Response:**
-  `{ "Section 1": "Designing Data Processing Systems ...", ... }`
+  `{"Section 1": "Designing Data Processing Systems:- Security and Compliance: IAM, Data Security, Privacy, Regional Data Considerations, Compliance. Reliability and Fidelity: Data Cleaning, Monitoring Data Pipelines, Disaster Recovery, ACID Compliance, Data Validation. Flexibility and Portability: Mapping Business Requirements, Data/Application Portability, Data Staging/Cataloging. Data Migrations: Analyzing Stakeholder Needs, Migration Planning, Validation Strategy, Project/Dataset/Table Architecture.", "Section 2": "Ingesting and Processing Data:- Planning Data Pipelines: Data Sources/Sinks, Transformation Logic, Networking, Encryption. Building Pipelines: Data Cleansing, Service Identification, Transformations (Batch/Streaming), Data Acquisition. Deploying Pipelines: Job Automation, CI/CD.", "Section 3": "Storing Data:- Selecting Storage Systems: Data Access Patterns, Managed Services, Storage Costs/Performance, Data Lifecycle. Data Warehouse Usage: Data Model Design, Data Normalization, Business Requirements, Architecture for Data Access. Data Lakes: Management, Processing, Monitoring. Data Mesh: Building Data Mesh, Segmenting Data, Federated Governance Model.", "Section 4": "Preparing and Using Data for Analysis:- Data Preparation for Visualization: Tool Connections, Field Pre-calculation, BigQuery Materialized Views, Granularity of Time Data. Sharing Data: Data Sharing Rules, Publishing Datasets/Reports, Analytics Hub. Data Exploration and Analysis: Data Preparation for Feature Engineering, Data Discovery.", "Section 5": "Maintaining and Automating Data Workloads:- Optimizing Resources: Minimizing Costs, Resource Availability, Persistent/Job-based Data Clusters. Designing Automation: Creating DAGs, Scheduling Jobs. Organizing Workloads: Pricing Models, Job Types. Monitoring and Troubleshooting: Observability, Usage Monitoring, Troubleshooting, Workload Management. Failure Awareness: Fault Tolerance, Multi-region Job Runs, Data Corruption Handling, Replication/Failover."}`
 
 ### Generate Questions for Sections
 - **Endpoint:** `/generate_questions_for_sections`
@@ -104,22 +88,29 @@ Certibot is a Flask-based application designed to assist users in preparing for 
         }
       }, ... << 4 more >>]`
 
-### Exam Outline Key Topics
-- **Endpoint:** `/exam_outline_key_topics`
-- **Method:** GET
-- **Description:** Retrieves key topics for the selected exam outline.
-- **Example Request:** `curl http://localhost:5000/exam_outline_key_topics`
-- **Response:** Returns key topics relevant to the selected exam, formatted as a JSON array.
-- **Example Response:**
+### Exam Selection Topics
+- **Endpoint:** `/exam_selection`
+- **Method:** POST
+- **Description:** Selects an exam for generating questions.
+- **Input:**
+  `{"certifier": "GCP",
+  "exam_name": "Professional Data Engineer",
+  "exam_outline": "topics"}`
+- **Example Request:**
+  `curl -X POST http://localhost:5000/exam_selection
+-H "Content-Type: application/json"
+-d '{"certifier": "Google", "exam_name": "Professional Data Engineer", "exam_outline": "topics"}'`
+- **Response:**
   `{
   "key_topics": [
-    "Security and Compliance",
-    " Data Migrations",
-    " Data Lake Management",
-    " Data Preparation for Visualization",
-    " Optimizing Resources"
+    "IAM (Identity and Access Management)",
+    " Data Security",
+    " Data Pipeline Monitoring",
+    " Data Warehouse Usage",
+    " CI/CD (Continuous Integration/Continuous Deployment)"
   ]
-}`
+}
+`
 
 ### Generate Questions for Topics
 - **Endpoint:** `/generate_questions_for_topics`
