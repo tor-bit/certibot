@@ -162,17 +162,22 @@ def generate_questions_for_topics():
     certifier = selected_exam_details.get('certifier')
 
     question_generator = ExamQuestionGenerator(exam_outline=exam_outlines[certifier][exam_name])
-    generated_questions_str = question_generator.based_on_topics(topics, f"{certifier} {exam_name}")
+    
+    topics_questions = {}
 
-    # Attempt to directly parse the string into a JSON object
-    try:
-        generated_questions_json = json.loads(generated_questions_str)
-    except json.JSONDecodeError as e:
-        # If an error occurs, log it or handle it as needed
-        return jsonify({"error": "Failed to decode JSON"}), 500
+    for topic in topics:
+        try:
+            # Generate questions for each topic
+            generated_questions_str = question_generator.based_on_topics([topic], f"{certifier} {exam_name}")
+            generated_questions_json = json.loads(generated_questions_str)
+            # Add the generated questions to the topics_questions dict
+            topics_questions[topic] = generated_questions_json
+        except json.JSONDecodeError as e:
+            # Log the error or handle it as needed
+            topics_questions[topic] = {"error": f"{e}"}
 
-    # Return the cleaned JSON
-    return jsonify(generated_questions_json)
+    # Return the compiled topics and their questions as JSON
+    return jsonify(topics_questions)
 
 if __name__ == '__main__':
     app.run(debug=True)
