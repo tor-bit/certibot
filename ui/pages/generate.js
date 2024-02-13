@@ -3,12 +3,12 @@ import Hero from "../components/hero";
 import Navbar from "../components/navbar";
 import SectionTitle from "../components/sectionTitle";
 import Footer from "../components/footer";
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Sparkles from 'react-sparkle'
 import Container from "../components/container";
 import { NormalSelect } from "../components/dataEntry";
 import Link from "next/link";
-import { getCompanies, getExamsCompany, getExamSelection } from "./api/api";
+import { getCompanies, getExamsCompany, getExamSelection, getGenerateQuestionsForSections } from "./api/api";
 
 const exam_types = [
   { value: 'GCP', label: 'Google Cloud Platform' },
@@ -27,8 +27,18 @@ const GenerateQuestions = ({companies}) => {
 
   const [exam_type, setExamType] = useState('GCP');
 
-  const [exam_specific, setExamSpecfic] = useState('');
+  const [exam_specific, setExamSpecfic] = useState({});
 
+  const [sections, setSections] = useState({});
+
+  const [topics, setTopics] = useState({});
+
+
+
+  const handleGenerateQuestionsForSections = async (val) => {
+    let res = await getGenerateQuestionsForSections(val);
+    console.log("Questions: ", res);
+  }
 
   const handleGetExamsCompany = async (val) => {
     let res = await getExamsCompany(val);
@@ -40,6 +50,7 @@ const GenerateQuestions = ({companies}) => {
     }
     console.log("Dictionary is: ", dict)
     setExams(dict);
+    setExamSpecfic(dict[0])
     return res;
 }
 
@@ -56,14 +67,22 @@ const GenerateQuestions = ({companies}) => {
   }
 
   const handleExamSpecificChange = (value) => {
+    console.log("VAL: ", value)
     setExamSpecfic(value);
   }
 
   const handleExamSelection = async () => {
-    let neww = getExamSelection(exam_type, exam_specific, exam_outline);
+    let neww = getExamSelection(exam_type, exam_specific.label??'', exam_outline);
     console.log("NWWW: ", neww)
+    // set the sections or exams from here
+    // NEED TO CATER FOR 404. and when the sections and topics are not there
+
+    
   }
   
+  useEffect(() => {
+    handleGetExamsCompany(exam_type);    
+  }, []);
 
   return (
     <>
@@ -95,12 +114,13 @@ const GenerateQuestions = ({companies}) => {
         <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
           Exam Specification
         </div>
-        <NormalSelect value={exam_specific} defaultValue={exam_specific} handleChange={handleExamSpecificChange} options={exams}/>
+        <NormalSelect value={exam_specific} defaultValue={exam_specific} handleChange={handleExamSpecificChange} 
+        options={exams} labelInValue={true}/>
 
         <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
           Exam Outline
         </div>
-        <NormalSelect value={exam_outline} defaultValue={exam_outline} handleChange={handleExamOutlineChange}
+        <NormalSelect value={exam_outline} defaultValue={exam_outline} handleChange={handleExamOutlineChange} 
          options={[
           { value: 'topics', label: 'Topics' },
           { value: 'sections', label: 'Sections' },
@@ -111,6 +131,12 @@ const GenerateQuestions = ({companies}) => {
         className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
           Let's do it!
         </button>
+
+        {exam_outline === 'topics' ?
+          <>div</> 
+          : 
+          <>sigh</>
+        }
       </Container>
       <Footer />
     </>
