@@ -33,6 +33,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.43.9",
+    "react-quiz-component": "^0.8.1",
     "react-sparkle": "^2.0.0",
     "tsparticles-preset-stars": "^1.16.1"
   },
