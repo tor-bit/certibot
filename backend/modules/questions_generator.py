@@ -10,7 +10,7 @@ class ExamQuestionGenerator:
         """
         Generate a list of keywords for the exam.
         """      
-        return self._call_openai_api(f'Return only a list of 5, comma separated, of the top core products or topics that will be tested based on this exam outline {self.exam_outline}')
+        return self._call_openai_api(f'Return only a list of 5, comma separated, of the top core products that will be tested based on this exam outline {self.exam_outline}')
 
     def based_on_outline(self, section, exam_name):
         """
