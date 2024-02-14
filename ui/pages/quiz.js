@@ -9,14 +9,10 @@ import Container from "../components/container";
 import { NormalSelect } from "../components/dataEntry";
 import Link from "next/link";
 
-const exam_types = [
-  { value: 'google', label: 'Google' },
-  { value: 'aws', label: 'AWS' },
-  { value: 'microsoft', label: 'Microsoft' }
-]
 
 
-const GenerateQuestions = () => {
+
+const Quiz = () => {
 
 
   
@@ -27,6 +23,11 @@ const GenerateQuestions = () => {
 
   const handleExamTypeChange = () => {
     console.log("Handle Exam Type change")
+  }
+
+  const handleExamOutlineChange = (value) => {
+    console.log("E: ", value)
+    setExamOutline(value)
   }
   
 
@@ -53,31 +54,13 @@ const GenerateQuestions = () => {
         </h2>
 
         <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
-          Exam Type
+          Sections
         </div>
-        <NormalSelect value={exam_type} defaultValue={exam_type} handleChange={handleExamTypeChange} options={exam_types}/>
 
-        <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
-          Exam Specification
-        </div>
-        <NormalSelect value={exam_type} defaultValue={exam_type} handleChange={handleExamTypeChange} options={exam_types}/>
-
-        <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
-          Exam Outline
-        </div>
-        <NormalSelect value={exam_outline} defaultValue={exam_outline} handleChange={handleExamTypeChange}
-         options={[
-          { value: 'topics', label: 'Topics' },
-          { value: 'sections', label: 'Sections' },
-        ]}/>
-
-        <Link href={exam_outline === 'topics' ? "/choose_topics":"/sections"} className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
-          Let's do it!
-        </Link>
       </Container>
       <Footer />
     </>
   );
 }
 
-export default GenerateQuestions;
+export default Quiz;

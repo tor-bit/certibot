@@ -15,24 +15,17 @@ const NormalSelect = ({options, handleChange, value, defaultValue="", labelInVal
   </Space>
 );
 
-const MultipleSelect = () => (
+const MultipleSelect = ({options, handleChange, value, defaultValue="", labelInValue=false}) => (
   <Space wrap>
-    <Select
-        value={value}
-        defaultValue={defaultValue}
-        style={{ width: 'max-value' }}
-        onChange={handleChange}
-        options={options}
-        labelInValue={labelInValue}
-    />
     <Select
       mode="multiple"
       allowClear
       style={{ width: '100%' }}
       placeholder="Please select"
-      defaultValue={['a10', 'c12']}
+      defaultValue={value}
       onChange={handleChange}
       options={options}
+      labelInValue={labelInValue}
     />
   </Space>
 );

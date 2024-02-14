@@ -29,6 +29,7 @@ export const getExamSelection = async (certifier, exam_name, exam_outline) => {
     }
   );
   const responseJson = await res.json();
+  console.log("Response JOSM exam selection: ", responseJson)
   return responseJson;
 }
 

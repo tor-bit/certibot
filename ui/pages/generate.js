@@ -6,7 +6,7 @@ import Footer from "../components/footer";
 import React, {useState, useEffect} from 'react'
 import Sparkles from 'react-sparkle'
 import Container from "../components/container";
-import { NormalSelect } from "../components/dataEntry";
+import { MultipleSelect, NormalSelect } from "../components/dataEntry";
 import Link from "next/link";
 import { getCompanies, getExamsCompany, getExamSelection, getGenerateQuestionsForSections } from "./api/api";
 
@@ -33,6 +33,9 @@ const GenerateQuestions = ({companies}) => {
 
   const [topics, setTopics] = useState({});
 
+  const [selected_topics, setSelectedTopic] = useState([]);
+
+  const [selected_sections, setSelectedSection] = useState([]);
 
 
   const handleGenerateQuestionsForSections = async (val) => {
@@ -71,12 +74,54 @@ const GenerateQuestions = ({companies}) => {
     setExamSpecfic(value);
   }
 
+  const handleSelectTopics = (value) => {
+    console.log("Current selected topics: ", value)
+    setSelectedTopic(value);
+  }
+
+  const handleSelectSections = (value) => {
+    console.log("Current selected sections: ", value)
+    setSelectedSection(value);
+  }
+
   const handleExamSelection = async () => {
-    let neww = getExamSelection(exam_type, exam_specific.label??'', exam_outline);
+    let neww = await getExamSelection(exam_type, exam_specific.label??'', exam_outline);
     console.log("NWWW: ", neww)
     // set the sections or exams from here
     // NEED TO CATER FOR 404. and when the sections and topics are not there
+    console.log("READ: ", neww);
 
+
+    let received_topics_sections = exam_outline === 'topics' ? neww['key_topics'] : neww;
+    console.log('Recevied topics: .', received_topics_sections)
+
+    if (exam_outline === 'topics') {
+      let dict = [];
+      for (var x = 0; x < received_topics_sections.length; x++) {
+        let neww = {value:x, label:received_topics_sections[x]};
+        dict.push(neww);
+      }
+      console.log("Dictionary is: ", dict)
+      setTopics(dict);
+    } else {
+
+      let dict = [];
+      for (const [key, value] of Object.entries(received_topics_sections)) {
+        let neww = {value:key, label:value};
+        dict.push(neww);
+      }
+      console.log("Dictionary is: ", dict)
+
+      setSections(dict);
+    }
+    // let dict = [];
+    // for (var x = 0; x < res.length; x++) {
+    //   let neww = {value:x, label:res[x]};
+    //   dict.push(neww);
+    // }
+    // console.log("Dictionary is: ", dict)
+    // setExams(dict);
+    // setExamSpecfic(dict[0])
     
   }
   
@@ -106,18 +151,18 @@ const GenerateQuestions = ({companies}) => {
           Exam Selection
         </h2>
 
-        <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
+        <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
           Exam Type
         </div>
         <NormalSelect value={exam_type} defaultValue={exam_type} handleChange={handleExamTypeChange} options={exam_types}/>
 
-        <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
+        <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
           Exam Specification
         </div>
         <NormalSelect value={exam_specific} defaultValue={exam_specific} handleChange={handleExamSpecificChange} 
         options={exams} labelInValue={true}/>
 
-        <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
+        <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
           Exam Outline
         </div>
         <NormalSelect value={exam_outline} defaultValue={exam_outline} handleChange={handleExamOutlineChange} 
@@ -128,15 +173,27 @@ const GenerateQuestions = ({companies}) => {
 
         <button href={exam_outline === 'topics' ? "/topics_outline":"/sections_outline"} 
         onClick={handleExamSelection}
-        className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+        className="w-full px-6 py-2 mt-4 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
           Let's do it!
         </button>
 
         {exam_outline === 'topics' ?
-          <>div</> 
+          <>
+          
+          <div className="text-md  mt-4 font-bold tracking-wider text-indigo-600 uppercase">
+            Select Topics
+          </div>
+          <MultipleSelect value={selected_topics} options={topics} handleChange={handleSelectTopics} />
+          </> 
           : 
-          <>sigh</>
-        }
+          <>
+          
+          <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
+            Select Sections
+          </div>
+          <MultipleSelect value={selected_sections} options={sections} handleChange={handleSelectSections} />
+          </>
+      }
       </Container>
       <Footer />
     </>
