@@ -1,13 +1,12 @@
 import Head from "next/head";
-import Hero from "../components/hero";
-import Navbar from "../components/navbar";
-import SectionTitle from "../components/sectionTitle";
 import Footer from "../components/footer";
 import React, {useState, useEffect} from 'react'
 import Sparkles from 'react-sparkle'
 import Container from "../components/container";
 import { MultipleSelect, NormalSelect } from "../components/dataEntry";
-import Link from "next/link";
+import { useContext } from "react";
+import { AppContext } from "./_app";
+import { useRouter } from 'next/navigation';
 import { getCompanies, getExamsCompany, getExamSelection, getGenerateQuestionsForSections } from "./api/api";
 
 const exam_types = [
@@ -20,6 +19,7 @@ const exam_types = [
 const GenerateQuestions = ({companies}) => {
 
 
+  const {setQuizDetails} = useContext(AppContext);
   
   const [exam_outline, setExamOutline] = useState('topics');
 
@@ -37,10 +37,16 @@ const GenerateQuestions = ({companies}) => {
 
   const [selected_sections, setSelectedSection] = useState([]);
 
+  const router = useRouter();
 
-  const handleGenerateQuestionsForSections = async (val) => {
-    let res = await getGenerateQuestionsForSections(val);
-    console.log("Questions: ", res);
+ 
+  const handleGenerateQuestions = () => {
+    if (exam_outline === 'topics') {
+      setQuizDetails({exam_outline, selected_outlines: selected_topics});
+    } else {
+      setQuizDetails({exam_outline, selected_outlines: selected_sections});
+    }
+    router.push('/quiz');
   }
 
   const handleGetExamsCompany = async (val) => {
@@ -114,15 +120,7 @@ const GenerateQuestions = ({companies}) => {
 
       setSections(dict);
     }
-    // let dict = [];
-    // for (var x = 0; x < res.length; x++) {
-    //   let neww = {value:x, label:res[x]};
-    //   dict.push(neww);
-    // }
-    // console.log("Dictionary is: ", dict)
-    // setExams(dict);
-    // setExamSpecfic(dict[0])
-    
+
   }
   
   useEffect(() => {
@@ -171,7 +169,7 @@ const GenerateQuestions = ({companies}) => {
           { value: 'sections', label: 'Sections' },
         ]}/>
 
-        <button href={exam_outline === 'topics' ? "/topics_outline":"/sections_outline"} 
+        <button 
         onClick={handleExamSelection}
         className="w-full px-6 py-2 mt-4 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
           Let's do it!
@@ -183,7 +181,8 @@ const GenerateQuestions = ({companies}) => {
           <div className="text-md  mt-4 font-bold tracking-wider text-indigo-600 uppercase">
             Select Topics
           </div>
-          <MultipleSelect value={selected_topics} options={topics} handleChange={handleSelectTopics} />
+          <MultipleSelect value={selected_topics} options={topics} 
+          handleChange={handleSelectTopics} labelInValue={true} />
           </> 
           : 
           <>
@@ -191,9 +190,16 @@ const GenerateQuestions = ({companies}) => {
           <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
             Select Sections
           </div>
-          <MultipleSelect value={selected_sections} options={sections} handleChange={handleSelectSections} />
+          <MultipleSelect value={selected_sections} options={sections}
+           handleChange={handleSelectSections} labelInValue={true} />
           </>
       }
+
+<button 
+        onClick={handleGenerateQuestions}
+        className="w-full px-6 py-2 mt-4 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+          Generate Questions
+        </button>
       </Container>
       <Footer />
     </>

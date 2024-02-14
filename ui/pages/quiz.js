@@ -1,35 +1,42 @@
 import Head from "next/head";
-import Hero from "../components/hero";
-import Navbar from "../components/navbar";
-import SectionTitle from "../components/sectionTitle";
 import Footer from "../components/footer";
-import React, {useState} from 'react'
+import React, {useEffect} from 'react';
 import Sparkles from 'react-sparkle'
 import Container from "../components/container";
-import { NormalSelect } from "../components/dataEntry";
-import Link from "next/link";
-
-
+import { useContext } from "react";
+import { AppContext } from "./_app";
+import { getGenerateQuestionsForSections, getGenerateQuestionsForTopics } from "./api/api";
 
 
 const Quiz = () => {
 
+  const {quiz_details} = useContext(AppContext);
 
-  
-  const [exam_outline, setExamOutline] = useState('topics');
+  console.log("QUIZ DETAILS: ", quiz_details);
+
+  const handleGenerateQuestions = async () => {
+
+    if (quiz_details['exam_outline'] === 'topics') {
+      let res = await getGenerateQuestionsForSections();
+    } else {
+      let res = await getGenerateQuestionsForTopics();
+    }
 
 
-  const [exam_type, setExamType] = useState('google');
+    let dict = [];
+    for (var x = 0; x < res.length; x++) {
+      let neww = {value:x, label:res[x]};
+      dict.push(neww);
+    }
+    
 
-  const handleExamTypeChange = () => {
-    console.log("Handle Exam Type change")
+ 
+    return res;
   }
 
-  const handleExamOutlineChange = (value) => {
-    console.log("E: ", value)
-    setExamOutline(value)
-  }
-  
+  useEffect(() => {
+    handleGenerateQuestions();    
+  }, []);
 
   return (
     <>
@@ -50,12 +57,9 @@ const Quiz = () => {
       />
       <Container className={`flex w-full flex-col mt-4 items-center justify-center text-center`}>
         <h2 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-blue-200 lg:leading-tight lg:text-4xl dark:text-white">
-          Exam Selection
+          Quiz
         </h2>
 
-        <div className="text-md font-bold tracking-wider text-indigo-600 uppercase">
-          Sections
-        </div>
 
       </Container>
       <Footer />
