@@ -59,7 +59,43 @@ exam_outlines = {
         'Section 3': "Storing Data:- Selecting Storage Systems: Data Access Patterns, Managed Services, Storage Costs/Performance, Data Lifecycle. Data Warehouse Usage: Data Model Design, Data Normalization, Business Requirements, Architecture for Data Access. Data Lakes: Management, Processing, Monitoring. Data Mesh: Building Data Mesh, Segmenting Data, Federated Governance Model.",
         'Section 4': "Preparing and Using Data for Analysis:- Data Preparation for Visualization: Tool Connections, Field Pre-calculation, BigQuery Materialized Views, Granularity of Time Data. Sharing Data: Data Sharing Rules, Publishing Datasets/Reports, Analytics Hub. Data Exploration and Analysis: Data Preparation for Feature Engineering, Data Discovery.",
         'Section 5': "Maintaining and Automating Data Workloads:- Optimizing Resources: Minimizing Costs, Resource Availability, Persistent/Job-based Data Clusters. Designing Automation: Creating DAGs, Scheduling Jobs. Organizing Workloads: Pricing Models, Job Types. Monitoring and Troubleshooting: Observability, Usage Monitoring, Troubleshooting, Workload Management. Failure Awareness: Fault Tolerance, Multi-region Job Runs, Data Corruption Handling, Replication/Failover."
-    }
+    },
+        "Associate Cloud Engineer": {
+        "Section 1": "Setting up cloud projects and accounts. Managing billing configuration. Installing and configuring the command line interface (CLI).",
+        "Section 2": "Planning and estimating GCP product use using the Pricing Calculator. Planning and configuring compute resources, data storage options, and network resources.",
+        "Section 3": "Deploying and implementing Compute Engine resources, Google Kubernetes Engine resources, App Engine, Cloud Run, and Cloud Functions resources. Deploying and implementing data solutions and networking resources.",
+        "Section 4": "Managing Compute Engine resources. Managing Google Kubernetes Engine resources. Managing App Engine and Cloud Run resources. Managing storage and database solutions. Managing networking resources. Monitoring and logging.",
+        "Section 5": "Managing identity and access management (IAM). Managing service accounts. Viewing audit logs for project and managed services."
+    },
+        "Professional Cloud Architect": {
+        "Section 1": "Designing and planning a cloud solution architecture includes designing a solution infrastructure that meets business requirements with considerations for business use cases, product strategy, cost optimization, supporting application design, integration with external systems, movement of data, design decision trade-offs, success measurements, compliance, and observability.",
+        "Section 2": "Managing and provisioning a solution infrastructure involves configuring network topologies, extending to on-premises or multicloud environments, security protection, configuring individual storage systems, data storage allocation, compute provisioning, security and access management, network configuration for data transfer and latency, data retention, life cycle management, data growth management, and configuring compute systems.",
+        "Section 3": "Designing for security and compliance focuses on identity and access management, resource hierarchy, data security, separation of duties, security controls, managing customer-managed encryption keys with Cloud KMS, and designing for compliance with legislation, commercial requirements, industry certifications, and audits.",
+        "Section 4": "Analyzing and optimizing technology and business processes includes analyzing and defining technical processes like SDLC, CI/CD, troubleshooting, testing and validation of software and infrastructure, service catalogue and provisioning, business continuity, and disaster recovery, and analyzing and defining business processes including stakeholder management, change management, team assessment, decision-making process, customer success management, cost/resource optimization.",
+        "Section 5": "Managing implementation entails advising development/operation teams for successful deployment, application development, API best practices, testing frameworks, data and system migration tooling, interacting with Google Cloud programmatically using Google Cloud Shell, Google Cloud SDK, and Cloud Emulators.",
+        "Section 6": "Ensuring solution and operations reliability covers monitoring/logging/profiling/alerting solution, deployment and release management, and assisting with the support of solutions in operation."
+        },
+        "Professional Cloud Developer": {
+        "Section 1": "Designing highly scalable, available, and reliable cloud-native applications. Covering microservices architectures, the use of Google recommended practices and patterns for application development.",
+        "Section 2": "Building and testing applications. Understanding of best practices for building secure applications, using Google Cloud managed services for application storage, and deploying applications in containerized environments.",
+        "Section 3": "Deploying applications. Skills in using Google Cloud services for application deployment, monitoring, management, and scaling. Understanding of continuous integration and continuous delivery (CI/CD) pipelines.",
+        "Section 4": "Integrating Google Cloud services. Ability to integrate Google Cloud services with applications in ways that optimize performance and cost and create seamless user experiences.",
+        "Section 5": "Managing application performance monitoring. Use of Google Cloud tools and technologies to monitor, troubleshoot, and optimize application performance."
+        },
+        "Professional Cloud Network Engineer": {
+        "Section 1": "Designing, planning, and prototyping a Google Cloud network. Including considerations for high availability, failover, disaster recovery, DNS strategy, security, data exfiltration requirements, load balancing, quotas, hybrid connectivity, container networking, IAM roles, SaaS/PaaS/IaaS services, and microsegmentation.",
+        "Section 2": "Implementing a Virtual Private Cloud (VPC). Covering IP address management, standalone vs. shared VPC, single vs. multi VPC, regional vs. multi-regional considerations, VPC Network Peering, firewall configurations, custom routes, managed services integration, and third-party device insertion.",
+        "Section 3": "Configuring network services. Focusing on load balancing configurations, Google Cloud Armor policies, Cloud CDN settings, and Cloud DNS management.",
+        "Section 4": "Implementing hybrid Interconnectivity. Discussing configurations for Cloud Interconnect, site-to-site IPsec VPNs, and Cloud Router setup.",
+        "Section 5": "Managing, monitoring, and optimizing network operations. Including logging and monitoring with Google Cloud’s operations suite, managing security, troubleshooting connectivity issues, and monitoring for latency and traffic flow."
+        },
+        "Professional Cloud Security Engineer": {
+        "Section 1": "Configuring Access Within a Cloud Solution Environment: Understanding how to manage access to cloud resources effectively.",
+        "Section 2": "Configuring Network Security: Knowledge of securing network architectures, including the use of firewalls, VPCs, and private access.",
+        "Section 3": "Ensuring Data Protection: Implementing mechanisms to protect data at rest and in transit, including encryption and data lifecycle management.",
+        "Section 4": "Managing Operations Within a Cloud Solution Environment: Overseeing the operational aspects of cloud solutions to ensure security and compliance.",
+        "Section 5": "Ensuring Compliance: Ensuring cloud solutions adhere to legal, regulatory, and compliance requirements."
+        }
     }
 }
 
