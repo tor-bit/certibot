@@ -17,21 +17,32 @@ const Quiz = () => {
   const handleGenerateQuestions = async () => {
 
     if (quiz_details['exam_outline'] === 'topics') {
-      let res = await getGenerateQuestionsForSections();
+      let topicss = quiz_details['selected_outlines'].map((x) => {
+        return x.label
+      })
+      console.log("Topics are: ", topicss)
+      let res = await getGenerateQuestionsForTopics({topics:topicss});
+      console.log("RESPONSE IS tOPICS : ", res)
+      return res;
     } else {
-      let res = await getGenerateQuestionsForTopics();
+      console.log("We reach here?")
+      let sections = {}
+
+      const iterator =  quiz_details['selected_outlines'].keys();
+
+          for (const key of iterator) {
+            console.log(key);
+            sections = {...sections, [key]:quiz_details['selected_outlines'][key].label};
+          }
+
+
+
+      console.log("Topics are: ", sections)
+      let res = await getGenerateQuestionsForSections(sections);
+      console.log("RESPONSE IS tOPICS : ", res)
+      
+      return res;
     }
-
-
-    let dict = [];
-    for (var x = 0; x < res.length; x++) {
-      let neww = {value:x, label:res[x]};
-      dict.push(neww);
-    }
-    
-
- 
-    return res;
   }
 
   useEffect(() => {
