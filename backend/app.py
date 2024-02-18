@@ -21,17 +21,17 @@ exams_by_company = {
                "Looker LookML Developer",
                "G Suite Certification"],
     'AWS': ["AWS Certified Cloud Practitioner",
-            "AWS Certified Solutions Architect – Associate",
-            "AWS Certified Developer – Associate",
-            "AWS Certified SysOps Administrator – Associate",
-            "AWS Certified Solutions Architect – Professional",
-            "AWS Certified DevOps Engineer – Professional",
-            "AWS Certified Security – Specialty",
-            "AWS Certified Big Data – Specialty",
-            "AWS Certified Advanced Networking – Specialty",
-            "AWS Certified Machine Learning – Specialty",
-            "AWS Certified Database – Specialty",
-            "AWS Certified Data Analytics – Specialty"],
+                "AWS Certified Solutions Architect – Associate",
+                "AWS Certified Developer – Associate",
+                "AWS Certified SysOps Administrator – Associate",
+                "AWS Certified Solutions Architect – Professional",
+                "AWS Certified DevOps Engineer – Professional",
+                "AWS Certified Security – Specialty",
+                "AWS Certified Big Data – Specialty",
+                "AWS Certified Advanced Networking – Specialty",
+                "AWS Certified Machine Learning – Specialty",
+                "AWS Certified Database – Specialty",
+                "AWS Certified Data Analytics – Specialty"],
     'Microsoft': ["Microsoft Certified: Azure Fundamentals",
                   "Microsoft Certified: Azure Data Fundamentals",
                   "Microsoft Certified: Azure AI Fundamentals",
@@ -59,14 +59,14 @@ exam_outlines = {
         'Section 3': "Storing Data:- Selecting Storage Systems: Data Access Patterns, Managed Services, Storage Costs/Performance, Data Lifecycle. Data Warehouse Usage: Data Model Design, Data Normalization, Business Requirements, Architecture for Data Access. Data Lakes: Management, Processing, Monitoring. Data Mesh: Building Data Mesh, Segmenting Data, Federated Governance Model.",
         'Section 4': "Preparing and Using Data for Analysis:- Data Preparation for Visualization: Tool Connections, Field Pre-calculation, BigQuery Materialized Views, Granularity of Time Data. Sharing Data: Data Sharing Rules, Publishing Datasets/Reports, Analytics Hub. Data Exploration and Analysis: Data Preparation for Feature Engineering, Data Discovery.",
         'Section 5': "Maintaining and Automating Data Workloads:- Optimizing Resources: Minimizing Costs, Resource Availability, Persistent/Job-based Data Clusters. Designing Automation: Creating DAGs, Scheduling Jobs. Organizing Workloads: Pricing Models, Job Types. Monitoring and Troubleshooting: Observability, Usage Monitoring, Troubleshooting, Workload Management. Failure Awareness: Fault Tolerance, Multi-region Job Runs, Data Corruption Handling, Replication/Failover."
-    },
+        },
         "Associate Cloud Engineer": {
         "Section 1": "Setting up cloud projects and accounts. Managing billing configuration. Installing and configuring the command line interface (CLI).",
         "Section 2": "Planning and estimating GCP product use using the Pricing Calculator. Planning and configuring compute resources, data storage options, and network resources.",
         "Section 3": "Deploying and implementing Compute Engine resources, Google Kubernetes Engine resources, App Engine, Cloud Run, and Cloud Functions resources. Deploying and implementing data solutions and networking resources.",
         "Section 4": "Managing Compute Engine resources. Managing Google Kubernetes Engine resources. Managing App Engine and Cloud Run resources. Managing storage and database solutions. Managing networking resources. Monitoring and logging.",
         "Section 5": "Managing identity and access management (IAM). Managing service accounts. Viewing audit logs for project and managed services."
-    },
+        },
         "Professional Cloud Architect": {
         "Section 1": "Designing and planning a cloud solution architecture includes designing a solution infrastructure that meets business requirements with considerations for business use cases, product strategy, cost optimization, supporting application design, integration with external systems, movement of data, design decision trade-offs, success measurements, compliance, and observability.",
         "Section 2": "Managing and provisioning a solution infrastructure involves configuring network topologies, extending to on-premises or multicloud environments, security protection, configuring individual storage systems, data storage allocation, compute provisioning, security and access management, network configuration for data transfer and latency, data retention, life cycle management, data growth management, and configuring compute systems.",
@@ -95,6 +95,240 @@ exam_outlines = {
         "Section 3": "Ensuring Data Protection: Implementing mechanisms to protect data at rest and in transit, including encryption and data lifecycle management.",
         "Section 4": "Managing Operations Within a Cloud Solution Environment: Overseeing the operational aspects of cloud solutions to ensure security and compliance.",
         "Section 5": "Ensuring Compliance: Ensuring cloud solutions adhere to legal, regulatory, and compliance requirements."
+        },
+        "Professional Machine Learning Engineer": {
+         "Section 1": "ML Problem Framing: Define ML problems, frame ML problems.",
+         "Section 2": "ML Solution Architecture: Design ML solutions, prepare and process data.",
+         "Section 3": "ML Model Development: Develop ML models, automate and orchestrate ML pipelines.",
+         "Section 4": "ML Model Deployment: Deploy ML models, monitor, optimize, and maintain ML models."  
+        },
+        "Professional Machine Learning Engineer": {
+        "Section 1": "ML Problem Framing: Define ML problems, frame ML problems.",
+        "Section 2": "ML Solution Architecture: Design ML solutions, prepare and process data.",
+        "Section 3": "ML Model Development: Develop ML models, automate and orchestrate ML pipelines.",
+        "Section 4": "ML Model Deployment: Deploy ML models, monitor, optimize, and maintain ML models."
+        },
+        "Professional Cloud Database Engineer": {
+        "Section 1": "Database Services Overview: Overview of database services available in Google Cloud.",
+        "Section 2": "Designing Database Solutions: Design solutions using Google Cloud databases.",
+        "Section 3": "Implementing and Managing Databases: Implement and manage databases on Google Cloud.",
+        "Section 4": "Monitoring and Optimizing Database Solutions: Monitor database performance, optimize database solutions."
+        },
+        "G Suite Certification": {
+        "Section 1": "Proficiency in digital tools like G Suite is important for students to advance in school and in the job market. The G Suite certification allows students to demonstrate their knowledge of G Suite tools (e.g. Gmail, Drive, Docs, Sheets, Slides, Forms, and Hangouts Meet), which can be important for future universities and employers. The certification is available for K-12 students.",
+        "Section 2": "The G Suite certification tests students ages 13 and older on the same content as adults, requiring them to show competency of G Suite to help them succeed after school. A new version of the exam allows students to take the test from their classroom or school testing center, administered by their teacher or other faculty, and monitored remotely.",
+        "Section 3": "Exclusive academic pricing extends the certification to students 13 and older. The student price for the exam is $37, a 50% discount off the list price of $75. Educators can register their class, and certified students receive a digital badge. The exam, currently only available in English, includes an exam guide, the Applied Digital Skills curriculum, and a G Suite certification practice lab on Qwiklabs."
+        },
+        "Looker LookML Developer": {
+        "Section 1": "The Looker LookML Developer certification exam assesses an individual's proficiency in building, deploying, and managing LookML models within the Looker platform. It covers topics such as LookML syntax, model design, and optimization techniques.",
+        "Section 2": "Candidates are tested on their ability to develop LookML models that support scalable and efficient data exploration, create derived tables and aggregate tables, manage project version control with Git, and implement security and access controls.",
+        "Section 3": "The exam also evaluates knowledge in advanced LookML features such as extending and embedding Looker, creating custom visualizations, and utilizing Looker API for integration with other applications.",
+        "Section 4": "Preparation for the exam includes hands-on experience with Looker and LookML, familiarity with SQL and database concepts, and understanding of data modeling practices. Looker offers documentation, tutorials, and training courses to aid in exam preparation.",
+        "Section 5": "The Looker LookML Developer certification is intended for data analysts, data engineers, and developers who build data models and reports in Looker. It validates their expertise in leveraging the platform to transform data into actionable insights."
+        },
+        "Looker Developer": {
+        "Section 1": "The Looker Developer certification exam evaluates an individual's skills in developing and implementing business intelligence solutions using the Looker platform. Key topics include understanding the Looker architecture, developing LookML models, and optimizing data models for performance.",
+        "Section 2": "Candidates will be tested on their ability to utilize Looker's development features such as creating and managing LookML projects, designing robust and scalable data models, and implementing custom visualizations and dashboards tailored to business requirements.",
+        "Section 3": "The exam also covers advanced Looker development practices, including integrating Looker with third-party tools and services, automating data workflows, and applying best practices for security and access control within Looker environments.",
+        "Section 4": "To prepare for the exam, candidates should have hands-on experience with Looker and a solid understanding of SQL, data modeling, and business intelligence concepts. Looker's documentation, training courses, and community forums are valuable resources for exam preparation.",
+        "Section 5": "This certification is aimed at data professionals, including business intelligence developers, data analysts, and data engineers, who use Looker to build and deploy analytics solutions. It demonstrates their ability to leverage Looker to drive data-driven decision-making across their organization."
+        },
+        "Looker Business Analyst": {
+        "Section 1": "The Looker Business Analyst certification exam assesses an individual's proficiency in leveraging Looker to analyze and visualize data to support business decision-making. Key areas include navigating the Looker platform, understanding data models, and building reports and dashboards.",
+        "Section 2": "Candidates will be evaluated on their ability to effectively use Looker's exploration features to extract insights from data, customize visualizations for various analytical needs, and share findings through Looker dashboards and reports.",
+        "Section 3": "The exam covers critical competencies in data analysis, such as applying filters and pivots for advanced data segmentation, performing cohort and time series analyses, and utilizing Looker's embedded analytics capabilities to disseminate insights.",
+        "Section 4": "Preparation for the exam should focus on gaining practical experience with Looker, including exploring data, creating calculated fields, and designing impactful visualizations. Looker's online documentation, interactive tutorials, and community resources are recommended study materials.",
+        "Section 5": "This certification targets business analysts, data analysts, and other roles focused on business intelligence, data reporting, and analytics. It validates their skill set in using Looker to drive data-informed strategies and achieve business objectives."
+        }
+    },
+    "AWS": {
+        "AWS Certified Cloud Practitioner": {
+            "Section 1": "Cloud Concepts – 26%: Define the AWS Cloud and its value proposition. Identify aspects of AWS Cloud economics. List the different cloud architecture design principles.",
+            "Section 2": "Security – 25%: Define the AWS shared responsibility model. Define AWS Cloud security and compliance concepts. Identify AWS access management capabilities. Identify resources for security support.",
+            "Section 3": "Technology – 33%: Define methods of deploying and operating in the AWS Cloud. Define the AWS global infrastructure. Identify the core AWS services. Identify resources for technology support.",
+            "Section 4": "Billing and Pricing – 16%: Compare and contrast the various pricing models for AWS. Recognize the various account structures in relation to AWS billing and pricing. Identify resources available for billing support."
+        },
+        "AWS Certified Solutions Architect Associate": {
+            "Section 1": "Design Resilient Architectures: Choose reliable/resilient storage, Design decoupling mechanisms using AWS services, Choose appropriate resilient network components.",
+            "Section 2": "Design High-Performing Architectures: Select high-performing and scalable storage solutions, Design high-performing IP networking solutions, Choose high-performing database solutions.",
+            "Section 3": "Design Secure Applications and Architectures: Design secure application tiers, Choose appropriate data security options.",
+            "Section 4": "Design Cost-Optimized Architectures: Choose cost-effective storage solutions, Design cost-effective compute and database services.",
+            "Section 5": "Operational Excellence: Monitor and log environments, Automate and orchestrate AWS environments."
+        },
+        "AWS Certified Developer – Associate": {
+            "Section 1": "Development with AWS Services: Understand how to use AWS SDKs to interact with AWS services and to write applications. Know how to use AWS Elastic Beanstalk to deploy and manage applications.",
+            "Section 2": "Security: Implement and manage AWS security features, including authentication, authorization, and encryption. Use AWS Identity and Access Management (IAM) for service authentication.",
+            "Section 3": "Deployment and Debugging: Deploy applications using CI/CD pipelines and understand how to use AWS CloudFormation. Troubleshoot application and deployment issues.",
+            "Section 4": "Refactoring: Migrate existing applications to AWS and optimize applications to use AWS services and features effectively. Understand serverless development with AWS Lambda.",
+            "Section 5": "Monitoring and Troubleshooting: Monitor applications using Amazon CloudWatch and use AWS X-Ray for debugging and analysis. Understand how to optimize performance.",
+            "Section 6": "AWS Services and Architectures: Gain knowledge of key AWS services like Amazon S3, DynamoDB, RDS, EC2, and Lambda. Understand the core AWS architectural best practices."
+        },
+        "AWS Certified SysOps Administrator – Associate": {
+            "Section 1": "Monitoring, Logging, and Remediation: Implement and manage monitoring and logging solutions using Amazon CloudWatch, AWS CloudTrail, and AWS Config. Understand how to remediate issues based on monitoring and alerting.",
+            "Section 2": "Reliability and Business Continuity: Design and implement backup and restore strategies using AWS services. Understand how to ensure high availability and fault tolerance using Amazon EC2 Auto Scaling and Elastic Load Balancing (ELB).",
+            "Section 3": "Deployment, Provisioning, and Automation: Use AWS services such as AWS CloudFormation and AWS OpsWorks for deployment and infrastructure as code (IaC). Automate administrative tasks by using AWS CLI and SDKs.",
+            "Section 4": "Security and Compliance: Implement and manage security policies on AWS using IAM, Security Groups, NACLs, and AWS KMS. Understand the shared responsibility model and compliance concepts.",
+            "Section 5": "Networking and Content Delivery: Configure and manage VPCs, VPNs, and Direct Connect. Understand how to use Amazon CloudFront for content delivery and how to optimize network performance.",
+            "Section 6": "Cost and Performance Optimization: Monitor and identify cost-optimization opportunities using AWS Cost Explorer and Trusted Advisor. Implement performance optimization strategies for AWS resources.",
+            "Section 7": "Operational Excellence: Follow the AWS Well-Architected Framework to improve systems with a focus on operational excellence. Implement best practices for maintaining AWS environments."
+        },
+        "AWS Certified DevOps Engineer – Professional": {
+            "Section 1": "SDLC Automation: Implement and manage continuous integration and continuous delivery processes using AWS services.",
+            "Section 2": "Configuration Management and Infrastructure as Code: Automate and manage infrastructure provisioning and management using AWS CloudFormation and other AWS tools.",
+            "Section 3": "Monitoring and Logging: Deploy, manage, and operate scalable, highly available, and fault-tolerant systems on AWS. Implement and control the flow of data to and from AWS.",
+            "Section 4": "Policies and Standards Automation: Apply best practices for security, governance, and validation of AWS resource configurations.",
+            "Section 5": "Incident and Event Response: Troubleshoot and resolve issues in development and production environments."
+        },
+        "AWS Certified Security – Specialty": {
+            "Section 1": "Incident Response: Identify and mitigate threats, and conduct incident analysis by using AWS services.",
+            "Section 2": "Logging and Monitoring: Design and implement security monitoring and alerting.",
+            "Section 3": "Infrastructure Security: Understand the use of AWS mechanisms to implement a secure infrastructure.",
+            "Section 4": "Identity and Access Management: Use AWS identity and access management controls effectively.",
+            "Section 5": "Data Protection: Encrypt, manage, and secure data at rest and in transit."
+        },
+        "AWS Certified Big Data – Specialty": {
+            "Section 1": "Data Collection: Collect, stream, and process big data using AWS data services.",
+            "Section 2": "Storage and Data Management: Implement data storage and database services to manage big data.",
+            "Section 3": "Processing: Process and analyze big data using AWS analytics and machine learning services.",
+            "Section 4": "Visualization: Use AWS services to visualize and interpret big data.",
+            "Section 5": "Security: Secure big data solutions and comply with data protection regulations."
+        },
+        "AWS Certified Advanced Networking – Specialty": {
+            "Section 1": "Design and Implement AWS Networks: Design highly available, scalable, and secure networking solutions on AWS.",
+            "Section 2": "Network Optimization: Optimize network performance for AWS services.",
+            "Section 3": "Automation for AWS Networking Tasks: Automate AWS networking tasks for efficient network operations.",
+            "Section 4": "Compliance and Security: Implement and manage security policies within AWS networking infrastructure.",
+            "Section 5": "Hybrid Networking Architectures: Design and implement hybrid IT network architectures."
+        },
+        "AWS Certified Machine Learning – Specialty": {
+            "Section 1": "Data Engineering: Process, clean, and validate data for machine learning (ML) applications.",
+            "Section 2": "Exploratory Data Analysis: Analyze data and model potential solutions using AWS ML services.",
+            "Section 3": "Modeling: Design, implement, and deploy ML solutions using AWS.",
+            "Section 4": "Machine Learning Implementation and Operations: Automate and operationalize ML workflows and models.",
+            "Section 5": "Security and Compliance: Secure ML solutions and ensure compliance with data protection laws."
+        },
+        "AWS Certified Database – Specialty": {
+            "Section 1": "Database Design: Design highly available, cost-efficient, and scalable database solutions.",
+            "Section 2": "Deployment and Migration: Automate database solution deployments and migrations.",
+            "Section 3": "Management and Operations: Manage, maintain, and troubleshoot AWS database solutions.",
+            "Section 4": "Monitoring and Troubleshooting: Implement monitoring, logging, and troubleshooting of database solutions.",
+            "Section 5": "Database Security: Secure database solutions, ensure data integrity, and comply with data protection laws."
+        },
+        "AWS Certified Data Analytics – Specialty": {
+            "Section 1": "Collection: Collect and store data for analytics.",
+            "Section 2": "Storage and Data Management: Design and implement data storage solutions.",
+            "Section 3": "Processing and Analysis: Process, analyze, and visualize data using AWS analytics services.",
+            "Section 4": "Security: Implement security controls and compliance requirements.",
+            "Section 5": "Operational Best Practices: Apply best practices for the deployment and operation of analytics solutions."
+        }
+    },
+    "Microsoft": {
+          "Microsoft Certified: Azure Fundamentals": {
+            "Section 1": "Cloud Concepts: Understand core cloud services and principles, including aspects of Azure services.",
+            "Section 2": "Core Azure Services: Detailed overview of Azure core services, including compute, networking, storage, and database services.",
+            "Section 3": "Security and Compliance: Overview of Azure's security tools and features, identity services, and governance methodologies.",
+            "Section 4": "Azure Pricing and Support: Understanding Azure subscriptions, planning and managing costs, and Azure support options."
+        },
+          "Microsoft Certified: Azure Data Fundamentals": {
+            "Section 1": "Explore core data concepts: Understand types of core data workloads, and data analytics concepts.",
+            "Section 2": "Explore roles and responsibilities in the world of data: Identify different data roles in Azure.",
+            "Section 3": "Explore Azure data services: Overview of Azure services related to data management and databases.",
+            "Section 4": "Explore relational data in Azure: Understand relational databases in Azure, including Azure SQL.",
+            "Section 5": "Explore non-relational data in Azure: Dive into Azure's non-relational data services like Cosmos DB.",
+            "Section 6": "Explore modern data warehouse analytics in Azure: Introduction to Azure Synapse Analytics and data lake concepts."
+        },
+         "Microsoft Certified: Azure AI Fundamentals": {
+            "Section 1": "Introduction to AI: Understand the basic concepts of AI and machine learning.",
+            "Section 2": "Machine Learning on Azure: Explore Azure Machine Learning services and tools.",
+            "Section 3": "Computer Vision on Azure: Dive into Azure's computer vision services, including Custom Vision and Face API.",
+            "Section 4": "Natural Language Processing on Azure: Overview of Azure services for language understanding, including LUIS and Text Analytics.",
+            "Section 5": "Conversational AI on Azure: Introduction to creating bots using Azure Bot Services and QnA Maker."
+        },
+          "Microsoft Certified: Azure Administrator Associate": {
+            "Section 1": "Manage Azure identities and governance: Understand how to manage Azure Active Directory, Azure policies, and subscriptions. This includes user and group management, role-based access control, and resource tagging.",
+            "Section 2": "Implement and manage storage: Focus on managing storage accounts, data in Azure Storage, Azure files, and Azure Blob storage. Learn to secure storage and manage storage costs effectively.",
+            "Section 3": "Deploy and manage Azure compute resources: Learn to configure VMs, create and configure containers, and Azure Kubernetes Service. Understand automation and VM management.",
+            "Section 4": "Configure and manage virtual networking: Dive into virtual networks, VPN gateway configurations, network security groups, and Azure ExpressRoute for private connections.",
+            "Section 5": "Monitor and back up Azure resources: Utilize Azure Monitor, Azure Backup, and other tools for monitoring, alerting, and backing up resources."
+        },
+         "Microsoft Certified: Azure Developer Associate": {
+            "Section 1": "Develop Azure compute solutions: Work with Azure Functions, web apps, containerized applications, and manage compute resources.",
+            "Section 2": "Develop for Azure storage: Implement solutions for blob storage, Cosmos DB, storage queues, and data sharing.",
+            "Section 3": "Implement Azure security: Understand authentication, authorization, secure cloud solutions, and manage keys, tokens, and certificates.",
+            "Section 4": "Monitor, troubleshoot, and optimize Azure solutions: Use monitoring tools, configure application insights, and troubleshoot solutions.",
+            "Section 5": "Connect to and consume Azure services and third-party services: Integrate APIs, event and message-based models, and manage API management services."
+        },
+         "Microsoft Certified: Azure Security Engineer Associate": {
+            "Section 1": "Manage identity and access: Configure Azure AD for workloads, secure hybrid identities, and implement conditional access policies.",
+            "Section 2": "Implement platform protection: Understand network security, host security, container security, and Azure Resource Manager security.",
+            "Section 3": "Manage security operations: Configure security services and policies, manage security alerts, and respond to and remediate security issues.",
+            "Section 4": "Secure data and applications: Encrypt data at rest and in transit, manage application security, and secure or isolate databases."
+        },
+         "Microsoft Certified: Azure AI Engineer Associate": {
+            "Section 1": "Plan and manage an Azure Cognitive Services solution: Understand Cognitive Services APIs, create a Cognitive Services resource, and manage keys and endpoints.",
+            "Section 2": "Implement computer vision solutions: Use the Computer Vision API and Custom Vision Service to analyze images, detect faces, and recognize objects.",
+            "Section 3": "Implement natural language processing: Work with Text Analytics API, Language Understanding (LUIS), and create QnA Maker solutions.",
+            "Section 4": "Implement conversational AI solutions: Build bots with the Bot Framework, integrate bots with Cognitive Services, and manage bot resources."
+        },
+        "Microsoft Certified: Azure Data Scientist Associate": {
+            "Section 1": "Data Science and Machine Learning on Azure: Details on how to use Azure services for data science and machine learning tasks.",
+            "Section 2": "Implementing and Running Machine Learning Workloads on Azure: Specifics on setting up and running machine learning models, including Azure Machine Learning Service.",
+            "Section 3": "Data Processing and Analysis: Techniques and tools for data processing and analysis on Azure.",
+            "Section 4": "Monitoring and Optimizing Azure Machine Learning Solutions: Strategies for monitoring and optimizing the performance of machine learning solutions deployed on Azure."
+        },
+        "Microsoft Certified: Azure Data Engineer Associate": {
+            "Section 1": "Designing and Implementing Data Storage: How to design and implement various data storage solutions on Azure.",
+            "Section 2": "Managing and Developing Data Processing: Techniques for managing and developing data processing tasks.",
+            "Section 3": "Monitoring and Optimizing Data Solutions: Best practices for monitoring and optimizing data solutions on Azure."
+        },
+        "Microsoft Certified: Azure Database Administrator Associate": {
+            "Section 1": "Planning and Implementing Data Platform Resources: Steps for planning and implementing data platform resources on Azure.",
+            "Section 2": "Implementing a Secure Environment: Guidance on creating secure environments for database solutions.",
+            "Section 3": "Monitoring and Optimizing Operational Resources: Techniques for monitoring and optimizing the performance of operational resources.",
+            "Section 4": "Optimizing Query Performance: Strategies for optimizing the performance of database queries."
+        },
+        "Microsoft Certified: Azure Solutions Architect Expert": {
+            "Section 1": "Designing and Implementing a Data Platform Solution: Detailed guidelines on designing and implementing robust data platform solutions on Azure.",
+            "Section 2": "Designing for Identity and Security: Best practices for designing solutions with identity and security in mind.",
+            "Section 3": "Designing a Business Continuity Strategy: Strategies for ensuring business continuity through disaster recovery and backup solutions.",
+            "Section 4": "Designing for Deployment, Migration, and Integration: Considerations for deploying, migrating, and integrating Azure solutions."
+        },
+        "Microsoft Certified: Azure DevOps Engineer Expert": {
+            "Section 1": "Designing and Implementing Microsoft DevOps Solutions: Covers principles of DevOps practices, using Azure Repos for source control, and integrating continuous integration and continuous deployment (CI/CD) pipelines with Azure Pipelines.",
+            "Section 2": "Managing Source Control: Focuses on managing Git repositories, implementing branching strategies, and integrating source control with build and release pipelines.",
+            "Section 3": "Streamlining Builds and Releases: Details creating and managing build definitions, integrating automated tests, deploying to different environments, and using Azure Artifacts to manage dependencies.",
+            "Section 4": "Implementing Continuous Feedback: Covers strategies for monitoring application performance, collecting user feedback, and implementing strategies for reducing technical debt and managing backlogs.",
+            "Section 5": "Security and Compliance in DevOps: Discusses managing security in a DevOps workflow, including using Azure Security Center, implementing secure development practices, and compliance monitoring."
+        },
+        "Microsoft Certified: Security, Compliance, and Identity Fundamentals": {
+            "Section 1": "Understanding Microsoft Security, Compliance, and Identity Solutions: Introduces Microsoft's security tools and capabilities across Azure, Microsoft 365, and hybrid environments.",
+            "Section 2": "Implementing Microsoft Identity Solutions: Covers the concepts of Azure Active Directory, identity protection, hybrid identity, and managing external identities.",
+            "Section 3": "Security Solutions on Azure: Details Azure security features, including network security, host security, container security, and key management strategies.",
+            "Section 4": "Compliance and Governance Features: Discusses compliance management in Azure, Microsoft 365 compliance center, information protection, and governance strategies.",
+            "Section 5": "Data Protection and Management: Focuses on implementing data loss prevention policies, archiving and retention policies, and understanding Microsoft's information governance solutions."
+        },
+        "Microsoft Certified: Security Operations Analyst Associate": {
+            "Section 1": "Threat Management: Discusses identifying, investigating, and responding to threats using Microsoft Azure Sentinel, Microsoft 365 Defender, and third-party security products.",
+            "Section 2": "Monitoring and Reporting: Covers configuring security alerts, creating custom dashboards, and reporting on security incidents using Azure Monitor and other tools.",
+            "Section 3": "Implementing Security Controls: Details configuring security policies, implementing endpoint protection solutions, and managing security vulnerabilities.",
+            "Section 4": "Incident Response: Focuses on developing incident response strategies, understanding attack vectors, and using automation to respond to security incidents.",
+            "Section 5": "Understanding Regulatory and Compliance Standards: Covers key compliance standards relevant to security operations, including GDPR, HIPAA, and others, and how to ensure compliance using Microsoft solutions."
+        },
+        "Microsoft Certified: Identity and Access Administrator Associate": {
+            "Section 1": "Plan and implement an identity and access management strategy: Understand Azure Active Directory, identity governance principles, and organizational structures.",
+            "Section 2": "Implement an authentication and access management solution: Configure secure authentication methods, access management for apps, and conditional access policies.",
+            "Section 3": "Implement access management for apps: Integrate single sign-on (SSO), secure application registration, and manage API access to Microsoft Graph.",
+            "Section 4": "Plan and implement an identity governance strategy: Define and implement entitlement management, access reviews, privileged identity management, and identity protection."
+        },
+        "Microsoft Certified: Information Protection Administrator Associate": {
+            "Section 1": "Implement information protection: Understand data classification, labeling, and data loss prevention in Microsoft 365.",
+            "Section 2": "Implement data governance: Manage data governance and retention, in-place records management, and information governance solutions in Microsoft 365.",
+            "Section 3": "Manage search and investigation: Conduct content search, audit log investigations, and manage advanced eDiscovery."
+        },
+        "Microsoft Certified: Windows Server Hybrid Administrator Associate": {
+            "Section 1": "Implement Windows Server IaaS VMs: Deploy and manage Windows Server IaaS Virtual Machine on Azure, including storage, networking, and security.",
+            "Section 2": "Implement hybrid networking: Understand hybrid networking components, VPN connectivity, and routing solutions between on-premises and Azure.",
+            "Section 3": "Implement Windows Server migration, security, and monitoring: Migrate Windows Server workloads, implement Windows Server security solutions, and monitor Windows Server resources in a hybrid environment."
         }
     }
 }
