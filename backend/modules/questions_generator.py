@@ -6,12 +6,12 @@ class ExamQuestionGenerator:
         # will have to scrape this
         self.exam_outline = exam_outline
 
-    def retrieve_keytopics(self):
+    def retrieve_keytopics(self, exam_name):
         """
         Generate a list of keywords for the exam.
         """      
-        return self._call_openai_api(f'Return only a list of 5, comma separated, of the top core products that will be tested based on this exam outline {self.exam_outline}')
-
+        return self._call_openai_api(f'What are the core products that is tested in the {exam_name} exam. The response should be the 5 topics as strings that are comma separated and no spaces between the comma and the product.')
+    
     def based_on_outline(self, section, exam_name):
         """
         Generate questions for a specific section of the exam.
@@ -38,6 +38,7 @@ class ExamQuestionGenerator:
         """
         Generate questions based on a list of keywords for the exam.
         """
+        print(keywords)
         return self._call_openai_api(
                    f'Generate 5 complex, scenario-based multiple-choice questions for each of these topics {keywords} for the {exam_name} Exam. Include answers and explanations for each question in JSON format. Return only a json object as response. Structure the JSON object with topic, question, options, and solution keys. Remove any markdown or contextual characters.')    
 
