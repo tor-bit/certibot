@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Spin } from "antd";
 import Footer from "../components/footer";
 import React, {useState, useEffect} from 'react'
 import Sparkles from 'react-sparkle'
@@ -6,6 +7,7 @@ import Container from "../components/container";
 import { MultipleSelect, NormalSelect } from "../components/dataEntry";
 import { useContext } from "react";
 import { AppContext } from "./_app";
+import Navbar from "../components/navbar";
 import { useRouter } from 'next/navigation';
 import { getCompanies, getExamsCompany, getExamSelection, getGenerateQuestionsForSections } from "./api/api";
 
@@ -90,12 +92,19 @@ const GenerateQuestions = ({companies}) => {
     setSelectedSection(value);
   }
 
+  const [loading, setLoading] = useState(true);
+  
+  const [showSelection, setShowSelection] = useState(false);
+
   const handleExamSelection = async () => {
     let neww = await getExamSelection(exam_type, exam_specific.label??'', exam_outline);
     console.log("NWWW: ", neww)
     // set the sections or exams from here
     // NEED TO CATER FOR 404. and when the sections and topics are not there
     console.log("READ: ", neww);
+    setShowSelection(true);
+    setLoading(true);
+   
 
 
     let received_topics_sections = exam_outline === 'topics' ? neww['key_topics'] : neww;
@@ -121,8 +130,11 @@ const GenerateQuestions = ({companies}) => {
       setSections(dict);
     }
 
+    setLoading(false);
+
   }
-  
+
+
   useEffect(() => {
     handleGetExamsCompany(exam_type);    
   }, []);
@@ -144,23 +156,24 @@ const GenerateQuestions = ({companies}) => {
         overflowPx={80}
         fadeOutSpeed={1}
       />
+      <Navbar />
       <Container className={`flex w-full flex-col mt-4 items-center justify-center text-center`}>
         <h2 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-blue-200 lg:leading-tight lg:text-4xl dark:text-white">
           Exam Selection
         </h2>
 
-        <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
+        <div className="text-md mt-4 font-bold tracking-wider text-cyan-500 uppercase">
           Exam Type
         </div>
         <NormalSelect value={exam_type} defaultValue={exam_type} handleChange={handleExamTypeChange} options={exam_types}/>
 
-        <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
+        <div className="text-md mt-4 font-bold tracking-wider text-cyan-500 uppercase">
           Exam Specification
         </div>
         <NormalSelect value={exam_specific} defaultValue={exam_specific} handleChange={handleExamSpecificChange} 
         options={exams} labelInValue={true}/>
 
-        <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
+        <div className="text-md mt-4 font-bold tracking-wider text-cyan-500 uppercase">
           Exam Outline
         </div>
         <NormalSelect value={exam_outline} defaultValue={exam_outline} handleChange={handleExamOutlineChange} 
@@ -171,35 +184,56 @@ const GenerateQuestions = ({companies}) => {
 
         <button 
         onClick={handleExamSelection}
-        className="w-full px-6 py-2 mt-4 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+        className="w-full px-6 py-2 mt-4 text-center text-white bg-cyan-700 rounded-xl lg:ml-5">         
           Let's do it!
         </button>
 
-        {exam_outline === 'topics' ?
-          <>
-          
-          <div className="text-md  mt-4 font-bold tracking-wider text-indigo-600 uppercase">
-            Select Topics
-          </div>
-          <MultipleSelect value={selected_topics} options={topics} 
-          handleChange={handleSelectTopics} labelInValue={true} />
-          </> 
-          : 
-          <>
-          
-          <div className="text-md mt-4 font-bold tracking-wider text-indigo-600 uppercase">
-            Select Sections
-          </div>
-          <MultipleSelect value={selected_sections} options={sections}
-           handleChange={handleSelectSections} labelInValue={true} />
-          </>
-      }
+        {!showSelection ? <></>
+        :
+        loading ?
 
-<button 
+
+
+<Spin spinning={loading}/>
+:
+
+exam_outline === 'topics' ?
+<>
+
+<div className="text-md  mt-4 font-bold tracking-wider text-cyan-500 uppercase">
+  Select Topics
+</div>
+<MultipleSelect value={selected_topics} options={topics} 
+handleChange={handleSelectTopics} labelInValue={true} />
+</> 
+: 
+<>
+
+<div className="text-md mt-4 font-bold tracking-wider text-cyan-500 uppercase">
+  Select Sections
+</div>
+<MultipleSelect value={selected_sections} options={sections}
+ handleChange={handleSelectSections} labelInValue={true} />
+</>
+
+
+        }
+
+        {showSelection ? 
+        
+        <button 
         onClick={handleGenerateQuestions}
-        className="w-full px-6 py-2 mt-4 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+        className="w-full px-6 py-2 mt-4 text-center text-white bg-cyan-700 rounded-xl lg:ml-5">         
           Generate Questions
         </button>
+      
+        :
+<></>
+        }
+
+
+
+
       </Container>
       <Footer />
     </>

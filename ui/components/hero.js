@@ -38,7 +38,7 @@ const Hero = () => {
           which are crucial for professional advancement.
           </p>
 
-          <div className="mt-8 text-sm font-bold tracking-wider text-blue-500 uppercase">
+          <div className="mt-8 text-sm font-bold tracking-wider text-cyan-500 uppercase">
             INTRODUCING
           </div>
 
@@ -46,7 +46,7 @@ const Hero = () => {
             Certibot
           </h1>
 
-          <div className="text-3xl mt-3 font-bold tracking-wider text-blue-500 uppercase">
+          <div className="text-3xl mt-3 font-bold tracking-wider text-cyan-500 uppercase">
             {`"THOU SHALL PASS"`}
           </div>
       </div>

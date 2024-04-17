@@ -36,7 +36,7 @@ export default function Home () {
             href="/generate"
             target="_blank"
             rel="noopener"
-            className="px-8 py-4 text-lg font-medium text-center text-white bg-blue-800 rounded-xl ">
+            className="px-8 py-4 text-lg font-medium text-center text-white bg-cyan-700 rounded-xl ">
             Try it Now
           </a>
         </div>

@@ -10,16 +10,20 @@ import { ModuleQuestion, ProgressBar, Control, Results } from "../components/qui
 import { quizData } from "../components/quizData";
 import { topics_questions } from "../components/check";
 import { Button } from "antd";
+import Link from "next/link";
+import Navbar from "../components/navbar";
 
 const Quiz = () => {
 
   const {quiz_details} = useContext(AppContext);
 
   console.log("QUIZ DETAILS: ", quiz_details);
+  const [quiz_title, setQuizTitle] = useState("");
 
   const handleGenerateQuestions = async () => {
 
     if (quiz_details['exam_outline'] === 'topics') {
+      setQuizTitle("TOPIC: ");
       let topicss = quiz_details['selected_outlines'].map((x) => {
         return x.label
       })
@@ -28,18 +32,17 @@ const Quiz = () => {
       console.log("RESPONSE IS tOPICS : ", res)
       return res;
     } else {
-      console.log("We reach here?")
-      let sections = {}
+      console.log("We reach here?", quiz_details)
+      let sections = {};
+      setQuizTitle("SECTION: ");
 
       const iterator =  quiz_details['selected_outlines'].keys();
 
           for (const key of iterator) {
             console.log(key);
             sections = {...sections,
-               [key]:quiz_details['selected_outlines'][key].label};
+               [key]:quiz_details['selected_outlines'][key].key};
           }
-
-
 
       console.log("Sections are: ", sections)
       let res = await getGenerateQuestionsForSections(sections);
@@ -111,6 +114,7 @@ const Quiz = () => {
         overflowPx={80}
         fadeOutSpeed={1}
       />
+      <Navbar />
       <Container className={`flex w-full flex-col mt-4 items-center justify-center text-center`}>
         <h2 className="max-w-2xl mt-3 text-3xl font-bold leading-snug tracking-tight text-blue-200 lg:leading-tight lg:text-4xl dark:text-white">
           Quiz
@@ -118,11 +122,12 @@ const Quiz = () => {
 
         {!showResults && (
           <>
-          <p style={{color:'whitesmoke'}}>
-            Topic: Big Query
+          <p style={{color:'#21E0ED', fontWeight:'800', fontSize:'20px'}}>
+            {quiz_title}
+            Big Query
           </p>
           {topics_questions["BigQuery"].questions.map((moduleQuestions, index) => {
-console.log("here : ", moduleQuestions)
+              console.log("here : ", moduleQuestions)
               return (
                 <>
                   <ModuleQuestion
@@ -174,12 +179,12 @@ console.log("here : ", moduleQuestions)
             >
               <div />
               <div>
-                <Button
-                  onClick={() => setQuizModalVisible(false)}
-                  type="primary"
-                >
-                  Close
-                </Button>
+                <Link href="/quiz" className="w-full px-6 py-2 mt-3 text-center text-white bg-cyan-700 rounded-xl lg:ml-5 mr-4">         
+                    Re-do Questions
+                </Link>
+                <Link href="/generate" className="w-full px-6 py-2 mt-3 text-center text-white bg-cyan-700 rounded-xl lg:ml-5">         
+                    Generate again
+                </Link>
               </div>
             </div>
           </>

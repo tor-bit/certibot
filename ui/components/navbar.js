@@ -4,10 +4,11 @@ import Image from "next/image"
 import { Disclosure } from "@headlessui/react";
 
 const Navbar = () => {
-  const navigation = [
-    "Product",
-    "Features",
-  ];
+  // const navigation = [
+  //   "Product",
+  //   "Features",
+  // ];
+  const navigation = [];
 
   return (
     <div className="w-full">
@@ -28,7 +29,7 @@ const Navbar = () => {
                         style={{ width: 'auto', height: 'auto' }}
                       />
                     </span>
-                    <span className="text-blue-500">Certibot</span>
+                    <span className="text-cyan-500">Certibot</span>
                   </span>
                 </Link>
 
@@ -62,7 +63,7 @@ const Navbar = () => {
                           {item}
                       </Link>
                     ))}
-                    <Link href="/generate" className="w-full px-6 py-2 mt-3 text-center text-white bg-blue-800 rounded-xl lg:ml-5">         
+                    <Link href="/generate" className="w-full px-6 py-2 mt-3 text-center text-white bg-cyan-700 rounded-xl lg:ml-5">         
                         Try it now
                     </Link>
                   </>
@@ -86,7 +87,7 @@ const Navbar = () => {
         </div>
 
         <div className="hidden mr-3 space-x-4 lg:flex nav__item">
-          <Link href="/generate" className="px-6 py-2 text-white bg-blue-800 rounded-xl md:ml-5">
+          <Link href="/generate" className="px-6 py-2 text-white bg-cyan-700 rounded-xl md:ml-5">
               Try it now
           </Link>
         </div>

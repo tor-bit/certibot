@@ -22,8 +22,10 @@ export function Results({ questions, userAnswers, quiz_topic_section, is_topic }
               selectedOption={userAnswers[index]}
               isResult={true}
             />
-            <p style={{color:'blue', margin:'4px'}}>
-                Explanation:
+            <p style={{color:'#21E0ED', margin:'0px'}}>
+                Explanation: 
+            </p>
+            <p style={{color:'#21E0ED', margin:'0px', marginBottom:'25px'}}>
                 {moduleQuestions["solution"].explanation}
             </p>
           </>
@@ -49,6 +51,7 @@ export function Control({ updateQuestion, lastQuestion, disableBack, disableNext
           onClick={() => updateQuestion("dec")}
           style={{ marginRight: "0.25rem" , color:'white'}}
           disabled={disableBack}
+          ghost 
         >
           Back
         </Button>
@@ -56,7 +59,8 @@ export function Control({ updateQuestion, lastQuestion, disableBack, disableNext
           onClick={() => updateQuestion("inc")}
           type="primary"
           disabled={disableNext}
-          style={{ color:'white'}}
+          style={{ color:'#21E0ED'}}
+          ghost
         >
           {lastQuestion ? "Submit" : "Next"}
         </Button>
@@ -66,7 +70,7 @@ export function Control({ updateQuestion, lastQuestion, disableBack, disableNext
 }
 
 export function ProgressBar({ percent }) {
-  return <Progress percent={percent} showInfo={false} strokeLinecap="square" />;
+  return <Progress percent={percent} showInfo={false} strokeColor={"#21E0ED"} />;
 }
 
 export function ModuleQuestion({
@@ -118,40 +122,30 @@ export function ModuleQuestion({
                 isResult && selectedOption === key && selectedOption !== answer
             });
             return (
-          
               <Radio.Button
-               
-
-
                 checked={key === selectedOption}
                 value={key}
-
                 style= {{
-                    color: (isResult && key === answer) ? 'green' :  (isResult && selectedOption === key && selectedOption !== answer) ? 'red' :  (key === selectedOption) ? 'blue': 'whitesmoke',
+                    color: (isResult && key === answer) ? '#00e626' :  (isResult && selectedOption === key && selectedOption !== answer) ? '#ff4019' :  (key === selectedOption) ? '#21E0ED': 'whitesmoke',
                     border:`2px solid`,
-                    borderColor: (isResult && key === answer) ? 'green' :  (isResult && selectedOption === key && selectedOption !== answer) ? 'red' :  (key === selectedOption) ? 'blue' : 'whitesmoke',
-                    borderRadius:'10px',
+                    borderColor: (isResult && key === answer) ? '#00e626' :  (isResult && selectedOption === key && selectedOption !== answer) ? '#ff4019' :  (key === selectedOption) ? '#21E0ED' : 'whitesmoke',
+                    borderRadius:'15px',
                     width: '100%',
                     display: 'block',
                     padding: '0.5rem',
                     marginBottom: '1rem',
                     cursor: 'pointer',
                     background:'none',
-                    height:'fit-content ',
-                    
+                    height:'fit-content '
                 }}
               >
-                
                 {options[key]}
-                
-               
               </Radio.Button>
-            
             );
           })}
         </Radio.Group>
       </div>
-      {isResult && <Divider />}
+      {isResult && <Divider style={{margin:'2px'}}/>}
     </div>
   );
 }
