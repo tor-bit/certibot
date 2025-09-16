@@ -47,7 +47,7 @@ class ExamQuestionGenerator:
             """
             Call the OpenAI API to generate questions based on the provided content.
             """
-            openai.api_key = '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' # will need to be hidden
+            openai.api_key = '' # will need to be hidden
             response = openai.ChatCompletion.create(
                 model=self.model,
                 messages=[
